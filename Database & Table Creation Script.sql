@@ -5,9 +5,9 @@ IF db_id('Storage') IS NULL
 
 GO
 
--- instance table creation; allows user to see incidence of numbers (highest/lowest)
 USE [Storage]
 
+-- INGREDIENT BIT
 CREATE TABLE Meat (
 	meat_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
 	meat_type VARCHAR(50) NOT NULL
@@ -48,6 +48,7 @@ CREATE TABLE Ingredients (
 	fav TINYINT FOREIGN KEY REFERENCES Fruit_And_Veg(fav_id)
 );
 
+-- DRINKS BIT
 CREATE TABLE Water (
 	water_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
 	amount TINYINT NOT NULL,
@@ -84,6 +85,12 @@ CREATE TABLE Coffee (
 	litres DECIMAL (6, 2) NOT NULL
 );
 
+CREATE TABLE Alcohol (
+	alcohol_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
+	name VARCHAR(50) NOT NULL,
+	litres DECIMAL (6, 2) NOT NULL	
+);
+
 CREATE TABLE Drinks (
 	drink_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
 	water TINYINT FOREIGN KEY REFERENCES Water(water_id) NOT NULL,
@@ -91,9 +98,11 @@ CREATE TABLE Drinks (
 	soda TINYINT FOREIGN KEY REFERENCES Soda(soda_id) NOT NULL,
 	frappe TINYINT FOREIGN KEY REFERENCES Frappe(frappe_id) NOT NULL,
 	milkshake TINYINT FOREIGN KEY REFERENCES Milkshake(milkshake_id) NOT NULL,
-	coffee TINYINT FOREIGN KEY REFERENCES Coffee(coffee_id) NOT NULL
+	coffee TINYINT FOREIGN KEY REFERENCES Coffee(coffee_id) NOT NULL,
+	alcohol TINYINT FOREIGN KEY REFERENCES Alcohol(alcohol_id) NOT NULL
 );
 
+-- MISCELLANEOUS
 CREATE TABLE Sides (
 	side_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
 	name VARCHAR(50) NOT NULL,
