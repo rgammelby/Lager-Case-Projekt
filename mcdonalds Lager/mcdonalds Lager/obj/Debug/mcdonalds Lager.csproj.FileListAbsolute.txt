@@ -1,0 +1,3 @@
+C:\Users\zbc23jakl\Source\Repos\rgammelby\Lager-Case-Projekt\mcdonalds Lager\mcdonalds Lager\obj\Debug\mcdonalds Lager.csproj.AssemblyReference.cache
+C:\Users\zbc23jakl\Source\Repos\rgammelby\Lager-Case-Projekt\mcdonalds Lager\mcdonalds Lager\obj\Debug\mcdonalds Lager.csproj.SuggestedBindingRedirects.cache
+C:\Users\zbc23jakl\Source\Repos\rgammelby\Lager-Case-Projekt\mcdonalds Lager\mcdonalds Lager\obj\Debug\mcdonalds Lager.csproj.CoreCompileInputs.cache

@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace mcdonalds_Lager
 {
-    internal class Program
+    internal class Draw
     {
-        static void Main(string[] args)
+        public static void test()
         {
-          
-            Console.ReadLine();
+
         }
     }
 }
