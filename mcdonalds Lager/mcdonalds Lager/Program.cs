@@ -10,7 +10,7 @@ namespace mcdonalds_Lager
     {
         static void Main(string[] args)
         {
-          
+            Gui.DrawBox(10,10,2,2);
             Console.ReadLine();
         }
     }
