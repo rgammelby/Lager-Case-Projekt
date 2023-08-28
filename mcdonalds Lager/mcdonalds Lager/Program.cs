@@ -8,9 +8,11 @@ namespace mcdonalds_Lager
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            Gui.DrawBox(10,10,2,2);
+            Gui.box box = new Gui.box();
+            box = Gui.DrawBox(10, 10, 2, 2);
+            Gui.SplitBoxVertical(box, 5);
             Console.ReadLine();
         }
     }

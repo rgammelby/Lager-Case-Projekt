@@ -9,3 +9,8 @@ C:\Users\janic\Source\Repos\rgammelby\Lager-Case-Projekt\mcdonalds Lager\mcdonal
 C:\Users\janic\Source\Repos\rgammelby\Lager-Case-Projekt\mcdonalds Lager\mcdonalds Lager\obj\Debug\mcdonalds Lager.csproj.CoreCompileInputs.cache
 C:\Users\janic\Source\Repos\rgammelby\Lager-Case-Projekt\mcdonalds Lager\mcdonalds Lager\obj\Debug\mcdonalds Lager.exe
 C:\Users\janic\Source\Repos\rgammelby\Lager-Case-Projekt\mcdonalds Lager\mcdonalds Lager\obj\Debug\mcdonalds Lager.pdb
+C:\Users\zbc23jakl\Source\Repos\rgammelby\Lager-Case-Projekt\mcdonalds Lager\mcdonalds Lager\bin\Debug\mcdonalds Lager.exe.config
+C:\Users\zbc23jakl\Source\Repos\rgammelby\Lager-Case-Projekt\mcdonalds Lager\mcdonalds Lager\bin\Debug\mcdonalds Lager.exe
+C:\Users\zbc23jakl\Source\Repos\rgammelby\Lager-Case-Projekt\mcdonalds Lager\mcdonalds Lager\bin\Debug\mcdonalds Lager.pdb
+C:\Users\zbc23jakl\Source\Repos\rgammelby\Lager-Case-Projekt\mcdonalds Lager\mcdonalds Lager\obj\Debug\mcdonalds Lager.exe
+C:\Users\zbc23jakl\Source\Repos\rgammelby\Lager-Case-Projekt\mcdonalds Lager\mcdonalds Lager\obj\Debug\mcdonalds Lager.pdb
