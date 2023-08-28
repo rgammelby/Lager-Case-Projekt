@@ -15,7 +15,7 @@ namespace mcdonalds_Lager
         public static void DrawMainMenu()
         {
             ConsoleDraw.box box = new ConsoleDraw.box();
-            box = ConsoleDraw.DrawBox(10, 10, 2, 2);
+            box = ConsoleDraw.DrawBox(130, 32, 2, 2);
             ConsoleDraw.SplitBoxVertical(box, 5);
         }
 

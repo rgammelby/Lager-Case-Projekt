@@ -10,6 +10,7 @@ namespace mcdonalds_Lager
     {
         static void Main()
         {
+            Console.SetWindowSize(170,45);
             Gui.DrawMainMenu();
             Console.ReadLine();
         }

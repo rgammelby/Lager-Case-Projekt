@@ -40,7 +40,7 @@ namespace mcdonalds_Lager.Præsentation
             public List<int> ySplit = new List<int>();
         }
         /// <summary>
-        /// Draw at box with the color white amd return the box
+        /// Draw at box with the color white and return the box
         /// </summary>
         /// <param name="xSize"></param>
         /// <param name="ySize"></param>
