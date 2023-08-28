@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\mcdonalds Lager",
+    "\\mcdonalds Lager\\mcdonalds Lager"
   ],
-  "SelectedNode": "\\mcdonalds Lager.sln",
+  "SelectedNode": "\\mcdonalds Lager\\mcdonalds Lager\\Program.cs",
   "PreviewInSolutionExplorer": false
 }
