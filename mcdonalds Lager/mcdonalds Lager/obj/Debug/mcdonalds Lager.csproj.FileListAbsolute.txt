@@ -14,3 +14,11 @@ C:\Users\zbc23jakl\Source\Repos\rgammelby\Lager-Case-Projekt\mcdonalds Lager\mcd
 C:\Users\zbc23jakl\Source\Repos\rgammelby\Lager-Case-Projekt\mcdonalds Lager\mcdonalds Lager\bin\Debug\mcdonalds Lager.pdb
 C:\Users\zbc23jakl\Source\Repos\rgammelby\Lager-Case-Projekt\mcdonalds Lager\mcdonalds Lager\obj\Debug\mcdonalds Lager.exe
 C:\Users\zbc23jakl\Source\Repos\rgammelby\Lager-Case-Projekt\mcdonalds Lager\mcdonalds Lager\obj\Debug\mcdonalds Lager.pdb
+C:\Users\zbcrabg\Source\Repos\Lager-Case-Projekt\mcdonalds Lager\mcdonalds Lager\bin\Debug\mcdonalds Lager.exe.config
+C:\Users\zbcrabg\Source\Repos\Lager-Case-Projekt\mcdonalds Lager\mcdonalds Lager\bin\Debug\mcdonalds Lager.exe
+C:\Users\zbcrabg\Source\Repos\Lager-Case-Projekt\mcdonalds Lager\mcdonalds Lager\bin\Debug\mcdonalds Lager.pdb
+C:\Users\zbcrabg\Source\Repos\Lager-Case-Projekt\mcdonalds Lager\mcdonalds Lager\obj\Debug\mcdonalds Lager.csproj.AssemblyReference.cache
+C:\Users\zbcrabg\Source\Repos\Lager-Case-Projekt\mcdonalds Lager\mcdonalds Lager\obj\Debug\mcdonalds Lager.csproj.SuggestedBindingRedirects.cache
+C:\Users\zbcrabg\Source\Repos\Lager-Case-Projekt\mcdonalds Lager\mcdonalds Lager\obj\Debug\mcdonalds Lager.csproj.CoreCompileInputs.cache
+C:\Users\zbcrabg\Source\Repos\Lager-Case-Projekt\mcdonalds Lager\mcdonalds Lager\obj\Debug\mcdonalds Lager.exe
+C:\Users\zbcrabg\Source\Repos\Lager-Case-Projekt\mcdonalds Lager\mcdonalds Lager\obj\Debug\mcdonalds Lager.pdb
