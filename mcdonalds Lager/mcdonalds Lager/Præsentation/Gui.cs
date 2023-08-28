@@ -9,6 +9,9 @@ namespace mcdonalds_Lager
 {
     internal class Gui
     {
+        /// <summary>
+        /// Draw the view for the user 
+        /// </summary>
         public static void DrawMainMenu()
         {
             ConsoleDraw.box box = new ConsoleDraw.box();
