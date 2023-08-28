@@ -8,7 +8,15 @@ namespace mcdonalds_Lager.Præsentation
 {
     internal class ConsoleDraw
     {
-        private static void Draw<ItemToDraw>(ItemToDraw draw, int x, int y, ConsoleColor foreGroundColor)
+        /// <summary>
+        /// Can draw a ´"stuff" at a potion on the console with a foreGruondColor
+        /// </summary>
+        /// <typeparam name="ItemToDraw"></typeparam>
+        /// <param name="draw"></param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="foreGroundColor"></param>
+         public static void Draw<ItemToDraw>(ItemToDraw draw, int x, int y, ConsoleColor foreGroundColor)
         {
             Console.ForegroundColor = foreGroundColor;
             Console.SetCursorPosition(x, y);
@@ -55,20 +63,26 @@ namespace mcdonalds_Lager.Præsentation
             box.xStartPosition = xStartPosition;
             box.yStartPosition = yStartPosition;
             box.ySplit.Add(xStartPosition);
-
+            //Top line
             Draw('╔', xStartPosition, yStartPosition, ConsoleColor.White);
             DrawHorizontalLine(xSize, xStartPosition, yStartPosition);
             Draw('╗', xStartPosition + xSize, yStartPosition, ConsoleColor.White);
-
+            //Side lines
             DrawVerticalLine(ySize, xStartPosition, yStartPosition);
             DrawVerticalLine(ySize, xStartPosition + xSize, yStartPosition);
-
+            //bottom line
             Draw('╚', xStartPosition, yStartPosition + ySize, ConsoleColor.White);
             DrawHorizontalLine(xSize, xStartPosition, yStartPosition + ySize);
             Draw('╝', xStartPosition + xSize, yStartPosition + ySize, ConsoleColor.White);
 
             return box;
         }
+        /// <summary>
+        /// Split the box up on the Vertical and save the postion 
+        /// </summary>
+        /// <param name="box"></param>
+        /// <param name="splitAt"></param>
+        /// <returns></returns>
         public static box SplitBoxVertical(box box, int splitAt)
         {
             box.ySplit.Add(box.xStartPosition + splitAt);
