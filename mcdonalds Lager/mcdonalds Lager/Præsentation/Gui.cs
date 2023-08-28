@@ -9,23 +9,20 @@ namespace mcdonalds_Lager
 {
     public class Gui
     {
-        static string[] mainMenuTitels = { "Ingredients", "Orders", "Drinks" };
-        static string[] DrinksMenuTitels = { "Water", "juice", "soda", "frappe","milkshake","coffe", "alcohol" };
+
         /// <summary>
         /// Draw the first view for the user 
         /// </summary>
-        public static void DrawMainMenu()
+        public static box DrawMenu(string[] titel)
         {
-            ConsoleDraw.box box = DrawWireFrameBox(mainMenuTitels);              
-        }
-        public static void DrawDrinksMenu()
-        {
-            ConsoleDraw.box box = DrawWireFrameBox(DrinksMenuTitels);
+            box box = DrawWireFrameBox(titel);
+            ConsoleDraw.Draw(titel[0], box.ySplit[0] + 1, box.ySize + 1, ConsoleColor.DarkRed);
+            return box;
         }
 
-        private static ConsoleDraw.box DrawWireFrameBox(string[] titel)
+        private static box DrawWireFrameBox(string[] titel)
         {
-            ConsoleDraw.box box = new ConsoleDraw.box();
+            box box = new box();
             //Makes the box and gets the size from the length of the titel
             int sum = 0;
             foreach (string item in titel)

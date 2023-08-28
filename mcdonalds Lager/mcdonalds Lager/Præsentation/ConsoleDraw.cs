@@ -6,6 +6,14 @@ using System.Threading.Tasks;
 
 namespace mcdonalds_Lager.Præsentation
 {
+    public class box
+    {
+        public int xSize;
+        public int ySize;
+        public int xStartPosition;
+        public int yStartPosition;
+        public List<int> ySplit = new List<int>();
+    }
     internal class ConsoleDraw
     {
         /// <summary>
@@ -39,14 +47,7 @@ namespace mcdonalds_Lager.Præsentation
             }
         }
 
-        public class box
-        {
-            public int xSize;
-            public int ySize;
-            public int xStartPosition;
-            public int yStartPosition;
-            public List<int> ySplit = new List<int>();
-        }
+
         /// <summary>
         /// Draw at box with the color white and return the box
         /// </summary>

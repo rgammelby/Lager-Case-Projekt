@@ -1,4 +1,5 @@
-﻿using System;
+﻿using mcdonalds_Lager.Logic;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -10,14 +11,14 @@ namespace mcdonalds_Lager
 {
     internal class Program
     {
-        static void Main()
+        public static void Main()
         {
-            SqlConnection s = DataAccessLayer.GetConnection();
-            s.Open();
-
+            //SqlConnection s = DataAccessLayer.GetConnection();
+            //s.Open();
+            
             Console.SetWindowSize(170,45);
-            Gui.DrawMainMenu();
-            DataAccessLayer.Select(s, "Coffee");
+            UserController.Controller();
+            //DataAccessLayer.Select(s, "Coffee");
             Console.ReadLine();
         }
     }
