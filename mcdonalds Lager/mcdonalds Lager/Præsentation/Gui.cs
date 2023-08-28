@@ -31,8 +31,24 @@ namespace mcdonalds_Lager
             }
         }
 
-        public static void DrawBox(int xSize, int ySize, int xStartPosition,int yStartPosition)
+        public class box
         {
+            public int xSize;
+            public int ySize;
+            public int xStartPosition;
+            public int yStartPosition;
+            public List<int> ySplit; 
+        }
+
+        public static box DrawBox(int xSize, int ySize, int xStartPosition,int yStartPosition)
+        {
+            box box = new box();
+            box.xSize = xSize;
+            box.xSize = ySize;
+            box.xSize = xStartPosition;
+            box.xSize = yStartPosition;
+            box.ySplit.Add(xStartPosition);
+
             Draw('╔', xStartPosition, yStartPosition, ConsoleColor.White);
             DrawHorizontalLine(xSize, xStartPosition, yStartPosition);
             Draw('╗', xStartPosition + xSize, yStartPosition, ConsoleColor.White);
@@ -43,8 +59,16 @@ namespace mcdonalds_Lager
             Draw('╚', xStartPosition, yStartPosition + ySize, ConsoleColor.White);
             DrawHorizontalLine(xSize, xStartPosition, yStartPosition + ySize);
             Draw('╝', xStartPosition + xSize, yStartPosition + ySize, ConsoleColor.White);
+
+
+            return box;
+        }
+        public static box SplitBoxVertical(box box, int splitAt)
+        {
+            box.ySplit.Add(box.xStartPosition + splitAt);
+            DrawVerticalLine(box.ySize, box.ySplit.Last(), box.yStartPosition);
+            return box;
         }
 
-        
     }
 }
