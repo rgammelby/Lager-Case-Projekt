@@ -43,7 +43,7 @@ CREATE TABLE Ingredients (
 	meat TINYINT FOREIGN KEY REFERENCES Meat(meat_id),
 	cheese TINYINT FOREIGN KEY REFERENCES Cheese(cheese_id),
 	bread TINYINT FOREIGN KEY REFERENCES Bread(bread_id),
-	dressing_and_dip TINYINT FOREIGN KEY REFERENCES Dressing_And_Dip(dad_id),
+	dad TINYINT FOREIGN KEY REFERENCES Dressing_And_Dip(dad_id),
 	salad TINYINT FOREIGN KEY REFERENCES Salad(salad_id),
 	fav TINYINT FOREIGN KEY REFERENCES Fruit_And_Veg(fav_id)
 );
@@ -58,37 +58,43 @@ CREATE TABLE Water (
 CREATE TABLE Juice (
 	juice_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
 	flavour VARCHAR(50) NOT NULL,
-	litres DECIMAL (6, 2) NOT NULL
+	litres DECIMAL (6, 2) NOT NULL,
+	CHECK (litres >= 0)
 );
 
 CREATE TABLE Soda (
 	soda_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
 	flavour VARCHAR(50) NOT NULL,
-	litres DECIMAL (6, 2) NOT NULL
+	litres DECIMAL (6, 2) NOT NULL,
+	CHECK (litres >= 0)
 );
 
 CREATE TABLE Frappe (
 	frappe_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
 	flavour VARCHAR(50) NOT NULL,
-	litres DECIMAL (6, 2) NOT NULL
+	litres DECIMAL (6, 2) NOT NULL,
+	CHECK (litres >= 0)
 );
 
 CREATE TABLE Milkshake (
 	milkshake_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
 	flavour VARCHAR(50) NOT NULL,
-	litres DECIMAL (6, 2) NOT NULL
+	litres DECIMAL (6, 2) NOT NULL,
+	CHECK (litres >= 0)
 );
 
 CREATE TABLE Coffee (
 	coffee_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
 	coffee_type VARCHAR(50) NOT NULL,
-	litres DECIMAL (6, 2) NOT NULL
+	litres DECIMAL (6, 2) NOT NULL,
+	CHECK (litres >= 0)
 );
 
 CREATE TABLE Alcohol (
 	alcohol_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
 	name VARCHAR(50) NOT NULL,
-	litres DECIMAL (6, 2) NOT NULL	
+	litres DECIMAL (6, 2) NOT NULL,
+	CHECK (litres >= 0)
 );
 
 CREATE TABLE Drinks (
@@ -119,9 +125,10 @@ CREATE TABLE Service_Items (
 );
 
 CREATE TABLE Orders (
-	order_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
+	order_id INT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
 	ingredients TINYINT FOREIGN KEY REFERENCES Ingredients(ingredient_id) NOT NULL,
 	drinks TINYINT FOREIGN KEY REFERENCES Drinks(drink_id) NOT NULL,
 	sides TINYINT FOREIGN KEY REFERENCES Sides(side_id) NOT NULL,
 	service_items TINYINT FOREIGN KEY REFERENCES Service_Items(item_id) NOT NULL
 );
+
