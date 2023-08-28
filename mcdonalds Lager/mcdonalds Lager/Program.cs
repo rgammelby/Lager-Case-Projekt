@@ -10,9 +10,7 @@ namespace mcdonalds_Lager
     {
         static void Main()
         {
-            Gui.box box = new Gui.box();
-            box = Gui.DrawBox(10, 10, 2, 2);
-            Gui.SplitBoxVertical(box, 5);
+            Gui.DrawMainMenu();
             Console.ReadLine();
         }
     }
