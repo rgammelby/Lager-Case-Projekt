@@ -63,14 +63,14 @@ namespace mcdonalds_Lager.Præsentation
             box.xStartPosition = xStartPosition;
             box.yStartPosition = yStartPosition;
             box.ySplit.Add(xStartPosition);
-
+            //Top line
             Draw('╔', xStartPosition, yStartPosition, ConsoleColor.White);
             DrawHorizontalLine(xSize, xStartPosition, yStartPosition);
             Draw('╗', xStartPosition + xSize, yStartPosition, ConsoleColor.White);
-
+            //Side lines
             DrawVerticalLine(ySize, xStartPosition, yStartPosition);
             DrawVerticalLine(ySize, xStartPosition + xSize, yStartPosition);
-
+            //bottom line
             Draw('╚', xStartPosition, yStartPosition + ySize, ConsoleColor.White);
             DrawHorizontalLine(xSize, xStartPosition, yStartPosition + ySize);
             Draw('╝', xStartPosition + xSize, yStartPosition + ySize, ConsoleColor.White);
