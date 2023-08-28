@@ -99,13 +99,13 @@ CREATE TABLE Alcohol (
 
 CREATE TABLE Drinks (
 	drink_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
-	water TINYINT FOREIGN KEY REFERENCES Water(water_id) NOT NULL,
-	juice TINYINT FOREIGN KEY REFERENCES Juice(juice_id) NOT NULL,
-	soda TINYINT FOREIGN KEY REFERENCES Soda(soda_id) NOT NULL,
-	frappe TINYINT FOREIGN KEY REFERENCES Frappe(frappe_id) NOT NULL,
-	milkshake TINYINT FOREIGN KEY REFERENCES Milkshake(milkshake_id) NOT NULL,
-	coffee TINYINT FOREIGN KEY REFERENCES Coffee(coffee_id) NOT NULL,
-	alcohol TINYINT FOREIGN KEY REFERENCES Alcohol(alcohol_id) NOT NULL
+	water_id TINYINT FOREIGN KEY REFERENCES Water(water_id) NOT NULL,
+	juice_id TINYINT FOREIGN KEY REFERENCES Juice(juice_id) NOT NULL,
+	soda_id TINYINT FOREIGN KEY REFERENCES Soda(soda_id) NOT NULL,
+	frappe_id TINYINT FOREIGN KEY REFERENCES Frappe(frappe_id) NOT NULL,
+	milkshake_id TINYINT FOREIGN KEY REFERENCES Milkshake(milkshake_id) NOT NULL,
+	coffee_id TINYINT FOREIGN KEY REFERENCES Coffee(coffee_id) NOT NULL,
+	alcohol_id TINYINT FOREIGN KEY REFERENCES Alcohol(alcohol_id) NOT NULL
 );
 
 -- MISCELLANEOUS
@@ -113,6 +113,22 @@ CREATE TABLE Sides (
 	side_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
 	name VARCHAR(50) NOT NULL,
 	amount TINYINT NOT NULL
+);
+
+-- Size: Small, Medium, Large
+CREATE TABLE Bags (
+	bag_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
+	bag_size VARCHAR(8) NOT NULL
+);
+
+CREATE TABLE Cups (
+	cup_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
+	cup_size VARCHAR(8) NOT NULL
+);
+
+CREATE TABLE Lids (
+	lid_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
+	lid_size VARCHAR(8) NOT NULL
 );
 
 CREATE TABLE Service_Items (
@@ -126,9 +142,13 @@ CREATE TABLE Service_Items (
 
 CREATE TABLE Orders (
 	order_id INT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
-	ingredients TINYINT FOREIGN KEY REFERENCES Ingredients(ingredient_id) NOT NULL,
-	drinks TINYINT FOREIGN KEY REFERENCES Drinks(drink_id) NOT NULL,
-	sides TINYINT FOREIGN KEY REFERENCES Sides(side_id) NOT NULL,
-	service_items TINYINT FOREIGN KEY REFERENCES Service_Items(item_id) NOT NULL
+	ingredient_id TINYINT FOREIGN KEY REFERENCES Ingredients(ingredient_id) NOT NULL,
+	drink_id TINYINT FOREIGN KEY REFERENCES Drinks(drink_id) NOT NULL,
+	side_id TINYINT FOREIGN KEY REFERENCES Sides(side_id) NOT NULL,
+	item_id TINYINT FOREIGN KEY REFERENCES Service_Items(item_id) NOT NULL
 );
 
+insert into coffee (coffee_type, litres)
+values ('arabica', 2);
+
+select * from coffee
