@@ -39,6 +39,12 @@ namespace mcdonalds_Lager
                 ConsoleDraw.SplitBoxHorizontal(box, (i * 2) + 2);
                 ConsoleDraw.Draw(titel[0], box.xSplit[0], box.xSplit[i] + 1, ConsoleColor.White);
             }
+
+            for (int i = 0; i < length; i++)
+            {
+
+            }
+
             //Makes the first buy red
             ConsoleDraw.Draw(titel[0], box.xSplit[0], box.xSplit[0] + 1, ConsoleColor.DarkRed);
 

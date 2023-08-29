@@ -1,5 +1,7 @@
 ﻿using mcdonalds_Lager.Præsentation;
 using System;
+using System.Data.SqlClient;
+using System.Net.NetworkInformation;
 using System.Reflection.Emit;
 
 namespace mcdonalds_Lager.Logic
@@ -46,6 +48,7 @@ namespace mcdonalds_Lager.Logic
                         case ConsoleKey.Enter:
                             Console.Clear();
                             box = NewMenuController(box, x);
+                            
                             x = 0;
                             break;
                         default:
@@ -80,32 +83,26 @@ namespace mcdonalds_Lager.Logic
                 {
                     case 0:
                         tabel = "Water";
-                        titel = new string[] {"Buy","Brand","Amount"};
                         box = Gui.DrawBuyMenu(titel);
                         break;
                     case 1:
                         tabel = "juice";
-                        titel = new string[] { "Buy", "Flavour", "Litres" };
                         box = Gui.DrawBuyMenu(titel);
                         break;
                     case 2:
                         tabel = "soda";
-                        titel = new string[] { "Buy", "Flavour", "Litres" };
                         box = Gui.DrawBuyMenu(titel);
                         break;
                     case 3:
                         tabel = "frappe";
-                        titel = new string[] { "Buy", "Flavour", "Litres" };
                         box = Gui.DrawBuyMenu(titel);
                         break;
                     case 4:
                         tabel = "milkshake";
-                        titel = new string[] { "Buy", "Flavour", "Litres" };
                         box = Gui.DrawBuyMenu(titel);
                         break;
                     case 5:
                         tabel = "coffee";
-                        titel = new string[] { "Buy", "Type", "Litres" };
                         box = Gui.DrawBuyMenu(titel);
                         break;
                     case 6:

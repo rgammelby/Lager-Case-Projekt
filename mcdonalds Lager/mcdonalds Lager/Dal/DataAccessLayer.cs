@@ -44,7 +44,6 @@ namespace mcdonalds_Lager
 
             return dt;
         }
-
         // PRINT
         public static void Print(SqlConnection s, string table)
         {
