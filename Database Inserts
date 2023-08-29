@@ -1,0 +1,129 @@
+INSERT INTO Meat (meat_type)
+VALUES ('Beef'),
+('Chicken'),
+('Fish'),
+('Vegan Beef'),
+('Vegan Chicken'),
+('Bacon');
+
+INSERT INTO Cheese (cheese_type)
+VALUES ('Emmentaler Cheese'),
+('Cheddar Cheese');
+
+INSERT INTO Bread (bread_type)
+VALUES ('Coarse Bun'),
+('Brioche Bun'),
+('Sesame Bun'),
+('Steamed Bun');
+
+INSERT INTO Dressing_And_Dip (dad_type)
+VALUES ('Ketchup'),
+('Pommes Frites Sauce'),
+('Mayo'),
+('Cheddar Dip'),
+('Garlic Dip'),
+('Chili Mayo'),
+('Béarnaise Dip'),
+('BBQ Dip'),
+('Sweet N Sour Dip'),
+('Curry Sauce'),
+('Mustard Dip'),
+('Big Mac Sauce'),
+('Cajun Sauce'),
+('Tasty Sauce'),
+('Tartar Sauce');
+
+INSERT INTO Salad (salad_type)
+VALUES ('Iceberg Lettuce');
+
+INSERT INTO Fruit_And_Veg (fav_type)
+VALUES ('Tomatoes'),
+('Pickles'),
+('Red Onions'),
+('Pickled Red Onions'),
+('White Onions'),
+('Minced Onions');
+
+INSERT INTO Water (amount, brand)
+VALUES (23, 'Aqua dOr');
+
+INSERT INTO Juice (flavour, amount)
+VALUES ('Fuze Tea Peach', 54),
+('Tropicana Orange Juice', 38),
+('Tropicana Apple Juice', 12),
+('Organic Minimilk', 73);
+
+INSERT INTO Soda (flavour, litres)
+VALUES ('Coca-Cola', 632),
+('Coca-Cola Zero', 321),
+('Sprite Zero', 435),
+('Fanta Orange', 556);
+
+INSERT INTO Frappe (flavour, litres)
+VALUES ('Sour Apple', 133),
+('Coffee with Chocolate', 22),
+('Coffee with Caramel', 453);
+
+INSERT INTO Milkshake (flavour, litres)
+VALUES ('Vanilla', 34),
+('Strawberry', 28),
+('Chocolate', 36),
+('Mango and Passionfruit', 21);
+
+INSERT INTO Coffee (coffee_type, litres)
+VALUES ('Cortado', 71),
+('Espresso', 84),
+('Amerciano', 34),
+('Flat White', 57),
+('Filtercoffee', 93),
+('Cappuccino', 92),
+('Cocoa', 294),
+('Latte', 32),
+('Vanilla Latte', 34),
+('Caramel Latte', 92),
+('Chai Latte', 12),
+('Iced-Latte', 20),
+('Iced-Latte Caramel', 120),
+('Iced-Latte Honey/Caramel', 78),
+('Iced-Latte Vanilla', 71),
+('Iced-Latte Chai', 214);
+
+INSERT INTO Sides (name, amount)
+VALUES ('Pommes Frites', 214),
+('Sharing Frites', 523),
+('Chili Cheese Tops', 127),	
+('Carrot pieces', 251),
+('Apple pieces', 912),
+('Chicken McNuggets', 252),
+('Hotwings', 344),
+('Mixed Team Box', 82),
+('McFlurry Smarties', 0),
+('McFlurry Daim', 0),
+('McFlurry Toms Turtles', 0),
+('Sundae', 0),
+('Sundae m. Chocolate', 0),
+('Sundae m. Caramel', 0),
+('Sundae m. Sprinkles', 0),
+('Sundae m. Chocolatesauce and Sprinkles', 0),
+('Sundae with Caramelsauce and Sprinkles', 0);
+
+INSERT INTO Bags (bag_size)
+VALUES('Small'),
+('Large');
+
+INSERT INTO Lids (lid_size)
+VALUES ('Small'),
+('Medium'),
+('Large');
+
+INSERT INTO Alcohol (name, litres)
+VALUES ('Light Rum', 62),
+('Dark Rum', 212),
+('Vodka', 632),
+('Whisky', 354),
+('Tequila', 0),
+('Jägermeister', 21),
+('Gin', 30),
+('Baileys', 215),
+('Malibu', 50),
+('Råstof', 0);
