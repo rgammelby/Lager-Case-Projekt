@@ -14,11 +14,10 @@ namespace mcdonalds_Lager.Logic
         static string[] drinksMenuTitels = { "Water", "Juice", "Soda", "Frappe", "Milkshake", "Coffe", "Alcohol" };
         static string[] ingredientsTitels = { "Meat", "Cheese", "Bread", "Dressing And Dip", "Salad", "Fruits" };
         static string[] titel;
-        static string table;
+
         /// <summary>
         /// 
         /// </summary>
-
         #region GuiControllers
         private static void BuyController(box box)
         {
@@ -56,7 +55,6 @@ namespace mcdonalds_Lager.Logic
                         break;
                 }
             }
-
         }
         public static void MainController()
         {
@@ -124,7 +122,7 @@ namespace mcdonalds_Lager.Logic
 
             else if (titel == drinksMenuTitels)
             {
-                //!!Do not edit 
+                //Table Names do not remove
                 string[] tableList = { "Water", "juice", "soda", "frappe", "milkshake", "coffee", "alcohol" };
                 titel = new string[0];
                 box = Gui.DrawBuyMenu(GetDatabaseItems(tableList[x]));
@@ -132,14 +130,19 @@ namespace mcdonalds_Lager.Logic
 
             else if (titel == ingredientsTitels)
             {
-                //!!Do not edit 
+                //Table Names do not remove
                 string[] tableList = { "meat", "cheese", "bread", "dad", "salad", "fav" };
                 titel = new string[0];
                 box = Gui.DrawBuyMenu(GetDatabaseItems(tableList[x]));
             }
 
-                    return box;
+            return box;
         }
+        /// <summary>
+        /// Gets the dataTable from the database from the "table"
+        /// </summary>
+        /// <param name="table"></param>
+        /// <returns></returns>
         private static DataTable GetDatabaseItems(string table)
         {
             var dt = DataAccessLayer.GetData($"SELECT * FROM {table}");
