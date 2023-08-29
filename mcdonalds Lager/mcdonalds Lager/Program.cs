@@ -13,12 +13,12 @@ namespace mcdonalds_Lager
     {
         public static void Main()
         {
-            //SqlConnection s = DataAccessLayer.GetConnection();
-            //s.Open();
+            SqlConnection s = DataAccessLayer.GetConnection();
+            s.Open();
             
             Console.SetWindowSize(170,45);
-            UserController.Controller();
-            //DataAccessLayer.Select(s, "Coffee");
+            //UserController.Controller();
+            DataAccessLayer.Print(s, "Coffee");
             Console.ReadLine();
         }
     }
