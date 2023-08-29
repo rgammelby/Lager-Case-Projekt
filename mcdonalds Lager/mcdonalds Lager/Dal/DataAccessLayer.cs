@@ -31,40 +31,52 @@ namespace mcdonalds_Lager
         }
 
         // sends 'select' query and prints result
-        public static void Select(SqlConnection s, string table)
+        public static DataTable GetData(SqlConnection s, string script)
         {
-            // whatever select script, in this case selects & prints top 5 entries (coffee_type and litres) from the coffee table (hehe) 
-            var script = $"select top 5 coffee_type, litres from {table}";
-
             ExecuteScript(script, s);
 
-            DataTable dt = new DataTable();
+            DataTable dt = new DataTable();  // DataTable declaration
             SqlDataAdapter sda = new SqlDataAdapter(script, s);
 
-            sda.Fill(dt);
+            sda.Fill(dt);  // fills datatable
 
-            s.Dispose();
+            s.Dispose();  // disposes of the opened connection
+
+            return dt;
+        }
+
+        // PRINT
+        public static void Print(SqlConnection s, string table)
+        {
+            var x = 0;
+
+            // whatever select script, in this case selects & prints top 5 entries (coffee_type and litres) from the coffee table (hehe) 
+            var script = $"SELECT * FROM {table}";
+
+            var dt = GetData(s, script);
 
             Console.WriteLine("\n");
 
-            for (int i = 0; i < dt.Columns.Count; i++)
+            // prints column names
+            for (int i = 1; i < dt.Columns.Count; i++)
             {
                 Console.Write($"{dt.Columns[i]}    ");
             }
 
             Console.WriteLine("\n");
 
+            // prints extracted data, spaced by 15 pr. column.
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 var cursorLeft = 0;
-                for (int n = 0; n < dt.Rows[i].ItemArray.Length; n++)
+                for (int n = 1; n < dt.Rows[i].ItemArray.Length; n++)
                 {
-                    if (n % dt.Rows.Count == 0)
+                    if (n % dt.Rows.Count - 1 == 0)
                         Console.CursorLeft = cursorLeft;
                     else
                         Console.CursorLeft = cursorLeft += 15;
 
-                    Console.Write($"{dt.Rows[i].ItemArray[n]} ");
+                    Console.Write($"{dt.Rows[i].ItemArray[n]}");
                 }
                 Console.Write("\n");
             }
