@@ -38,6 +38,7 @@ CREATE TABLE Fruit_And_Veg (
 	fav_type VARCHAR(50) NOT NULL
 );
 
+
 CREATE TABLE Ingredients (
 	ingredient_id TINYINT PRIMARY KEY IDENTITY(1, 1) NOT NULL,
 	meat TINYINT FOREIGN KEY REFERENCES Meat(meat_id),
@@ -51,15 +52,16 @@ CREATE TABLE Ingredients (
 -- DRINKS BIT
 CREATE TABLE Water (
 	water_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
-	amount TINYINT NOT NULL,
+	amount INT NOT NULL,
 	brand VARCHAR(50) NOT NULL
 );
+
 
 CREATE TABLE Juice (
 	juice_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
 	flavour VARCHAR(50) NOT NULL,
-	litres DECIMAL (6, 2) NOT NULL,
-	CHECK (litres >= 0)
+	amount INT NOT NULL,
+	CHECK (amount >= 0)
 );
 
 CREATE TABLE Soda (
@@ -112,10 +114,10 @@ CREATE TABLE Drinks (
 CREATE TABLE Sides (
 	side_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
 	name VARCHAR(50) NOT NULL,
-	amount TINYINT NOT NULL
+	amount INT NOT NULL
 );
 
--- Size: Small, Medium, Large
+-- Size: Small, Large
 CREATE TABLE Bags (
 	bag_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
 	bag_size VARCHAR(8) NOT NULL
