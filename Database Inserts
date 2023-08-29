@@ -115,3 +115,15 @@ INSERT INTO Lids (lid_size)
 VALUES ('Small'),
 ('Medium'),
 ('Large');
+
+INSERT INTO Alcohol (name, litres)
+VALUES ('Light Rum', 62),
+('Dark Rum', 212),
+('Vodka', 632),
+('Whisky', 354),
+('Tequila', 0),
+('Jägermeister', 21),
+('Gin', 30),
+('Baileys', 215),
+('Malibu', 50),
+('Råstof', 0);
