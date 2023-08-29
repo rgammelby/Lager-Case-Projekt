@@ -18,14 +18,14 @@ namespace mcdonalds_Lager.Præsentation
     internal class ConsoleDraw
     {
         /// <summary>
-        /// Can draw a ´"stuff" at a potion on the console with a foreGruondColor
+        /// Can draw input at a chosen potion on the console with a chosen foreGruondColor
         /// </summary>
         /// <typeparam name="ItemToDraw"></typeparam>
         /// <param name="draw"></param>
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <param name="foreGroundColor"></param>
-         public static void Draw<ItemToDraw>(ItemToDraw draw, int x, int y, ConsoleColor foreGroundColor)
+        public static void Draw<ItemToDraw>(ItemToDraw draw, int x, int y, ConsoleColor foreGroundColor)
         {
             Console.ForegroundColor = foreGroundColor;
             Console.SetCursorPosition(x, y);
@@ -33,6 +33,13 @@ namespace mcdonalds_Lager.Præsentation
             Console.ResetColor();
         }
 
+        #region LinesMethods
+        /// <summary>
+        /// Makes a line from bottom to top by the parameters
+        /// </summary>
+        /// <param name="length"></param>
+        /// <param name="xStartPosition"></param>
+        /// <param name="yStartPosition"></param>
         private static void DrawVerticalLine(int length, int xStartPosition, int yStartPosition)
         {
             for (int i = 1; i < length; i++)
@@ -40,6 +47,12 @@ namespace mcdonalds_Lager.Præsentation
                 Draw('║', xStartPosition, yStartPosition + i, ConsoleColor.White);
             }
         }
+        /// <summary>
+        /// Makes a line from left to right by the parameters
+        /// </summary>
+        /// <param name="length"></param>
+        /// <param name="xStartPosition"></param>
+        /// <param name="yStartPosition"></param>
         private static void DrawHorizontalLine(int length, int xStartPosition, int yStartPosition)
         {
             for (int i = 1; i < length; i++)
@@ -47,6 +60,11 @@ namespace mcdonalds_Lager.Præsentation
                 Draw('═', xStartPosition + i, yStartPosition, ConsoleColor.White);
             }
         }
+        #endregion
+        /// <summary>
+        /// Draws the overlaping lines in the box
+        /// </summary>
+        /// <param name="box"></param>
         private static void DrawHitOnLine(box box)
         {
             for (int i = 0; i < box.xSplit.Count(); i++)
@@ -57,7 +75,6 @@ namespace mcdonalds_Lager.Præsentation
                 }
             }
         }
-
 
         /// <summary>
         /// Draw at box with the color white and return the box
@@ -89,6 +106,7 @@ namespace mcdonalds_Lager.Præsentation
 
             return box;
         }
+        #region SplitMethods
         /// <summary>
         /// Split the box up on the Vertical and save the postion 
         /// </summary>
@@ -103,15 +121,16 @@ namespace mcdonalds_Lager.Præsentation
             Draw('╩', box.xStartPosition + splitAt, box.yStartPosition + box.ySize, ConsoleColor.White);
             return box;
         }
-        
         public static box SplitBoxHorizontal(box box, int splitAt)
         {
             box.xSplit.Add(box.yStartPosition + splitAt);
             Draw('╠', box.xStartPosition, box.yStartPosition + splitAt, ConsoleColor.White);
             DrawHorizontalLine(box.xSize, box.xStartPosition, box.yStartPosition + splitAt);
             Draw('╣', box.xStartPosition + box.xSize, box.yStartPosition + splitAt, ConsoleColor.White);
+            //Draws the overlap chars
             DrawHitOnLine(box);
             return box;
         }
+        #endregion
     }
 }

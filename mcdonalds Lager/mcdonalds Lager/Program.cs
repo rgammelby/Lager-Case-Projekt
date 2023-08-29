@@ -13,9 +13,6 @@ namespace mcdonalds_Lager
     {
         public static void Main()
         {
-            SqlConnection s = DataAccessLayer.GetConnection();
-            s.Open();
-
             Console.CursorVisible = false;          
             Console.SetWindowSize(170,45);
             UserController.MainController();
