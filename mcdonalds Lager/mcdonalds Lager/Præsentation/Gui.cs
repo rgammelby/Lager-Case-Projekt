@@ -19,6 +19,31 @@ namespace mcdonalds_Lager
             ConsoleDraw.Draw(titel[0], box.ySplit[0] + 1, box.ySize + 1, ConsoleColor.DarkRed);
             return box;
         }
+        public static box DrawBuyMenu(string[] titel)
+        {
+            box box = ConsoleDraw.DrawBox(20 * (titel.Length - 1) + 5, 22, 3, 2);
+
+            ConsoleDraw.SplitBoxVertical(box, 5);
+            for (int i = 1; i < titel.Length - 1; i++)
+            {
+                ConsoleDraw.SplitBoxVertical(box, 20 * i);
+            }
+            //Prints the titils in the box 
+            for (int i = 0; i < titel.Length; i++)
+            {
+                ConsoleDraw.Draw(titel[i], box.ySplit[i] + 1, box.yStartPosition + 1, ConsoleColor.White);
+            }
+            //Draw the buy text on the left
+            for (int i = 0;i < 10; i++)
+            {
+                ConsoleDraw.SplitBoxHorizontal(box, (i * 2) + 2);
+                ConsoleDraw.Draw(titel[0], box.xSplit[0], box.xSplit[i] + 1, ConsoleColor.White);
+            }
+            //Makes the first buy red
+            ConsoleDraw.Draw(titel[0], box.xSplit[0], box.xSplit[0] + 1, ConsoleColor.DarkRed);
+
+            return box;
+        }
 
         private static box DrawWireFrameBox(string[] titel)
         {

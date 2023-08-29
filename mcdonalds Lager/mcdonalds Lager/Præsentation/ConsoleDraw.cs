@@ -13,6 +13,7 @@ namespace mcdonalds_Lager.Præsentation
         public int xStartPosition;
         public int yStartPosition;
         public List<int> ySplit = new List<int>();
+        public List<int> xSplit = new List<int>();
     }
     internal class ConsoleDraw
     {
@@ -44,6 +45,16 @@ namespace mcdonalds_Lager.Præsentation
             for (int i = 1; i < length; i++)
             {
                 Draw('═', xStartPosition + i, yStartPosition, ConsoleColor.White);
+            }
+        }
+        private static void DrawHitOnLine(box box)
+        {
+            for (int i = 0; i < box.xSplit.Count(); i++)
+            {
+                for (int j = 1; j < box.ySplit.Count(); j++)
+                {
+                    Draw('╬', box.ySplit[j], box.xSplit[i], ConsoleColor.White);
+                }
             }
         }
 
@@ -90,6 +101,16 @@ namespace mcdonalds_Lager.Præsentation
             Draw('╦', box.xStartPosition + splitAt, box.yStartPosition, ConsoleColor.White);
             DrawVerticalLine(box.ySize, box.ySplit.Last(), box.yStartPosition);
             Draw('╩', box.xStartPosition + splitAt, box.yStartPosition + box.ySize, ConsoleColor.White);
+            return box;
+        }
+        
+        public static box SplitBoxHorizontal(box box, int splitAt)
+        {
+            box.xSplit.Add(box.yStartPosition + splitAt);
+            Draw('╠', box.xStartPosition, box.yStartPosition + splitAt, ConsoleColor.White);
+            DrawHorizontalLine(box.xSize, box.xStartPosition, box.yStartPosition + splitAt);
+            Draw('╣', box.xStartPosition + box.xSize, box.yStartPosition + splitAt, ConsoleColor.White);
+            DrawHitOnLine(box);
             return box;
         }
     }

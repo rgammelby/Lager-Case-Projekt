@@ -1,5 +1,6 @@
 ﻿using mcdonalds_Lager.Præsentation;
 using System;
+using System.Reflection.Emit;
 
 namespace mcdonalds_Lager.Logic
 {
@@ -10,6 +11,10 @@ namespace mcdonalds_Lager.Logic
         static string[] drinksMenuTitels = { "Water", "Juice", "Soda", "Frappe", "Milkshake", "Coffe", "Alcohol" };
         static string[] ingredientsTitels = { "Meat", "Cheese", "Bread", "Dressing And Dip", "Salad", "Fruits" };
         static string[] titel;
+        static string tabel;
+        /// <summary>
+        /// 
+        /// </summary>
         public static void Controller()
         {
             titel = mainMenuTitels;
@@ -46,8 +51,7 @@ namespace mcdonalds_Lager.Logic
                         default:
                             break;
                     }
-                }
-                
+                }               
             }
         }
         private static box NewMenuController(box box,int x)
@@ -66,29 +70,48 @@ namespace mcdonalds_Lager.Logic
                     case 2:
                         titel = drinksMenuTitels;
                         box = Gui.DrawMenu(drinksMenuTitels);
-
-                        break;
-                    default:
                         break;
                 }
             }
-            if (titel == drinksMenuTitels)
+
+            else if (titel == drinksMenuTitels)
             {
                 switch (x)
                 {
                     case 0:
+                        tabel = "Water";
                         titel = new string[] {"Buy","Brand","Amount"};
-                        box = Gui.DrawMenu(titel);
+                        box = Gui.DrawBuyMenu(titel);
                         break;
                     case 1:
-                        box = Gui.DrawMenu(mainMenuTitels);
+                        tabel = "juice";
+                        titel = new string[] { "Buy", "Flavour", "Litres" };
+                        box = Gui.DrawBuyMenu(titel);
                         break;
                     case 2:
-                        titel = drinksMenuTitels;
-                        box = Gui.DrawMenu(drinksMenuTitels);
-
+                        tabel = "soda";
+                        titel = new string[] { "Buy", "Flavour", "Litres" };
+                        box = Gui.DrawBuyMenu(titel);
                         break;
-                    default:
+                    case 3:
+                        tabel = "frappe";
+                        titel = new string[] { "Buy", "Flavour", "Litres" };
+                        box = Gui.DrawBuyMenu(titel);
+                        break;
+                    case 4:
+                        tabel = "milkshake";
+                        titel = new string[] { "Buy", "Flavour", "Litres" };
+                        box = Gui.DrawBuyMenu(titel);
+                        break;
+                    case 5:
+                        tabel = "coffee";
+                        titel = new string[] { "Buy", "Type", "Litres" };
+                        box = Gui.DrawBuyMenu(titel);
+                        break;
+                    case 6:
+                        tabel = "alcohol";
+                        titel = new string[] { "Buy", "Name", "Litres" };
+                        box = Gui.DrawBuyMenu(titel);
                         break;
                 }
             }

@@ -14,12 +14,12 @@ namespace mcdonalds_Lager
         public static void Main()
         {
             Console.CursorVisible = false;
-            //SqlConnection s = DataAccessLayer.GetConnection();
-            //s.Open();
+            SqlConnection s = DataAccessLayer.GetConnection();
+            s.Open();
             
             Console.SetWindowSize(170,45);
             UserController.Controller();
-            //DataAccessLayer.Select(s, "Coffee");
+            DataAccessLayer.Select(s, "Coffee");
             Console.ReadLine();
         }
     }
