@@ -18,7 +18,7 @@ namespace mcdonalds_Lager
 
             Console.CursorVisible = false;          
             Console.SetWindowSize(170,45);
-            UserController.Controller();
+            UserController.MainController();
             Console.ReadLine();
         }
     }

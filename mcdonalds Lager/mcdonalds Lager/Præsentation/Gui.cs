@@ -22,17 +22,22 @@ namespace mcdonalds_Lager
         }
         public static box DrawBuyMenu(DataTable dt)
         {
-            string[] titel = new string[] { "Buy", dt.Columns[1].ToString(), dt.Columns[2].ToString() };
-            box box = ConsoleDraw.DrawBox(20 * (titel.Length - 1) + 5, 22, 3, 2);
+            List<string> titel = new List<string> { "Buy" };
+            for (int i = 1; i < dt.Columns.Count; i++)
+            {
+                titel.Add(dt.Columns[i].ToString());
+            }
+
+            box box = ConsoleDraw.DrawBox(20 * (titel.Count - 1) + 5, 22, 3, 2);
             
 
             ConsoleDraw.SplitBoxVertical(box, 5);
-            for (int i = 1; i < titel.Length - 1; i++)
+            for (int i = 1; i < titel.Count - 1; i++)
             {
                 ConsoleDraw.SplitBoxVertical(box, 20 * i);
             }
             //Prints the titils in the box 
-            for (int i = 0; i < titel.Length; i++)
+            for (int i = 0; i < titel.Count; i++)
             {
                 ConsoleDraw.Draw(titel[i], box.ySplit[i] + 1, box.yStartPosition + 1, ConsoleColor.White);
             }

@@ -38,7 +38,6 @@ CREATE TABLE Fruit_And_Veg (
 	fav_type VARCHAR(50) NOT NULL
 );
 
-
 CREATE TABLE Ingredients (
 	ingredient_id TINYINT PRIMARY KEY IDENTITY(1, 1) NOT NULL,
 	meat TINYINT FOREIGN KEY REFERENCES Meat(meat_id),
@@ -52,16 +51,15 @@ CREATE TABLE Ingredients (
 -- DRINKS BIT
 CREATE TABLE Water (
 	water_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
-	amount INT NOT NULL,
+	amount TINYINT NOT NULL,
 	brand VARCHAR(50) NOT NULL
 );
-
 
 CREATE TABLE Juice (
 	juice_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
 	flavour VARCHAR(50) NOT NULL,
-	amount INT NOT NULL,
-	CHECK (amount >= 0)
+	litres DECIMAL (6, 2) NOT NULL,
+	CHECK (litres >= 0)
 );
 
 CREATE TABLE Soda (
@@ -114,10 +112,10 @@ CREATE TABLE Drinks (
 CREATE TABLE Sides (
 	side_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
 	name VARCHAR(50) NOT NULL,
-	amount INT NOT NULL
+	amount TINYINT NOT NULL
 );
 
--- Size: Small, Large
+-- Size: Small, Medium, Large
 CREATE TABLE Bags (
 	bag_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
 	bag_size VARCHAR(8) NOT NULL
@@ -149,3 +147,12 @@ CREATE TABLE Orders (
 	side_id TINYINT FOREIGN KEY REFERENCES Sides(side_id) NOT NULL,
 	item_id TINYINT FOREIGN KEY REFERENCES Service_Items(item_id) NOT NULL
 );
+
+
+insert into coffee (coffee_type, litres)
+values ('Arabica', 0.5),
+    ('Espresso', 0.3),
+    ('Mocca', 0.3),
+    ('Americano', 0.5),
+    ('Cappuccino', 0.3);
+select * from coffee

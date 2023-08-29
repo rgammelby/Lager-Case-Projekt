@@ -18,11 +18,50 @@ namespace mcdonalds_Lager.Logic
         /// <summary>
         /// 
         /// </summary>
-        public static void Controller()
+
+        #region GuiControllers
+        private static void BuyController(box box)
+        {
+            int cursorLoction = 0;
+            while (true)
+            {
+                switch (Console.ReadKey(true).Key)
+                {
+                    case ConsoleKey.UpArrow:
+                        if (cursorLoction > 0)
+                        {
+                            ConsoleDraw.Draw("buy", box.ySplit[0] + 1, box.xSplit[cursorLoction] + 1, ConsoleColor.White);
+                            cursorLoction--;
+                            ConsoleDraw.Draw("buy", box.ySplit[0] + 1, box.xSplit[cursorLoction] + 1, ConsoleColor.DarkRed);
+                        }
+                        break;
+                    case ConsoleKey.DownArrow:
+                        if (cursorLoction < box.xSplit.Count - 1)
+                        {
+                            ConsoleDraw.Draw("buy", box.ySplit[0] + 1, box.xSplit[cursorLoction] + 1, ConsoleColor.White);
+                            cursorLoction++;
+                            ConsoleDraw.Draw("buy", box.ySplit[0] + 1, box.xSplit[cursorLoction] + 1, ConsoleColor.DarkRed);
+                        }
+                        break;
+                    case ConsoleKey.Enter:
+                        Console.Clear();
+                        box = NewMenuController(box, cursorLoction);
+                        cursorLoction = 0;
+                        break;
+                    case ConsoleKey.Backspace:
+                        Console.Clear();
+                        MainController();
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+        }
+        public static void MainController()
         {
             titel = mainMenuTitels;
             box box = Gui.DrawMenu(titel);
-
             int cursorLoction = 0;
             while (true)
             {
@@ -48,36 +87,12 @@ namespace mcdonalds_Lager.Logic
                             break;
                         case ConsoleKey.Enter:
                             Console.Clear();
-                            box = NewMenuController(box, cursorLoction);               
-                            cursorLoction = 0;
-                            break;
-                        default:
-                            break;
-                    }
-                }
-                else
-                {
-                    switch (Console.ReadKey(true).Key)
-                    {
-                        case ConsoleKey.UpArrow:
-                            if (cursorLoction > 0)
-                            {
-                                ConsoleDraw.Draw("buy", box.ySplit[0] + 1, box.xSplit[cursorLoction] + 1, ConsoleColor.White);
-                                cursorLoction--;
-                                ConsoleDraw.Draw("buy", box.ySplit[0] + 1, box.xSplit[cursorLoction] + 1, ConsoleColor.DarkRed);
-                            }
-                            break;
-                        case ConsoleKey.DownArrow:
-                            if (cursorLoction < box.xSplit.Count - 1)
-                            {
-                                ConsoleDraw.Draw("buy", box.ySplit[0] + 1, box.xSplit[cursorLoction] + 1, ConsoleColor.White);
-                                cursorLoction++;
-                                ConsoleDraw.Draw("buy", box.ySplit[0] + 1, box.xSplit[cursorLoction] + 1, ConsoleColor.DarkRed);
-                            }
-                            break;
-                        case ConsoleKey.Enter:
-                            Console.Clear();
                             box = NewMenuController(box, cursorLoction);
+                            //Controlle for if you are in the last view for bofore the buy Gui/view
+                            if (titel != drinksMenuTitels && titel != ingredientsTitels)
+                            {
+                                BuyController(box);
+                            }                               
                             cursorLoction = 0;
                             break;
                         default:
@@ -86,6 +101,7 @@ namespace mcdonalds_Lager.Logic
                 }
             }
         }
+        #endregion
         private static box NewMenuController(box box,int x)
         {
             if (titel == mainMenuTitels)
@@ -108,17 +124,19 @@ namespace mcdonalds_Lager.Logic
 
             else if (titel == drinksMenuTitels)
             {
+                //!!Do not edit 
                 string[] tableList = { "Water", "juice", "soda", "frappe", "milkshake", "coffee", "alcohol" };
                 titel = new string[0];
                 box = Gui.DrawBuyMenu(GetDatabaseItems(tableList[x]));
             }
 
-            if (titel == ingredientsTitels)
+            else if (titel == ingredientsTitels)
             {
-
+                //!!Do not edit 
+                string[] tableList = { "meat", "cheese", "bread", "dad", "salad", "fav" };
+                titel = new string[0];
+                box = Gui.DrawBuyMenu(GetDatabaseItems(tableList[x]));
             }
-
-
 
                     return box;
         }
