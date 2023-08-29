@@ -1,6 +1,7 @@
 ﻿using mcdonalds_Lager.Præsentation;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +20,11 @@ namespace mcdonalds_Lager
             ConsoleDraw.Draw(titel[0], box.ySplit[0] + 1, box.ySize + 1, ConsoleColor.DarkRed);
             return box;
         }
-        public static box DrawBuyMenu(string[] titel)
+        public static box DrawBuyMenu(DataTable dt)
         {
+            string[] titel = new string[] { "Buy", dt.Columns[1].ToString(), dt.Columns[2].ToString() };
             box box = ConsoleDraw.DrawBox(20 * (titel.Length - 1) + 5, 22, 3, 2);
+            
 
             ConsoleDraw.SplitBoxVertical(box, 5);
             for (int i = 1; i < titel.Length - 1; i++)
@@ -39,14 +42,16 @@ namespace mcdonalds_Lager
                 ConsoleDraw.SplitBoxHorizontal(box, (i * 2) + 2);
                 ConsoleDraw.Draw(titel[0], box.xSplit[0], box.xSplit[i] + 1, ConsoleColor.White);
             }
-
-            for (int i = 0; i < length; i++)
+            for (int i = 0; i < dt.Rows.Count; i++)
             {
-
+                for (int n = 1; n < dt.Rows[i].ItemArray.Length; n++)
+                {
+                    ConsoleDraw.Draw(dt.Rows[i].ItemArray[n], box.ySplit[n] + 1, box.xSplit[i] + 1, ConsoleColor.White);
+                }
             }
 
-            //Makes the first buy red
-            ConsoleDraw.Draw(titel[0], box.xSplit[0], box.xSplit[0] + 1, ConsoleColor.DarkRed);
+                    //Makes the first buy red
+                    ConsoleDraw.Draw(titel[0], box.xSplit[0], box.xSplit[0] + 1, ConsoleColor.DarkRed);
 
             return box;
         }

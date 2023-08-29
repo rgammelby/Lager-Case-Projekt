@@ -31,8 +31,10 @@ namespace mcdonalds_Lager
         }
 
         // sends 'select' query and prints result
-        public static DataTable GetData(SqlConnection s, string script)
+        public static DataTable GetData(string script)
         {
+            SqlConnection s = GetConnection();
+            s.Open();
             ExecuteScript(script, s);
 
             DataTable dt = new DataTable();  // DataTable declaration
@@ -52,7 +54,7 @@ namespace mcdonalds_Lager
             // whatever select script, in this case selects & prints top 5 entries (coffee_type and litres) from the coffee table (hehe) 
             var script = $"SELECT * FROM {table}";
 
-            var dt = GetData(s, script);
+            var dt = GetData(script);
 
             Console.WriteLine("\n");
 

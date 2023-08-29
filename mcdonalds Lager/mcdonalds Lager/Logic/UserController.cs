@@ -1,5 +1,6 @@
 ﻿using mcdonalds_Lager.Præsentation;
 using System;
+using System.Data;
 using System.Data.SqlClient;
 using System.Net.NetworkInformation;
 using System.Reflection.Emit;
@@ -13,7 +14,7 @@ namespace mcdonalds_Lager.Logic
         static string[] drinksMenuTitels = { "Water", "Juice", "Soda", "Frappe", "Milkshake", "Coffe", "Alcohol" };
         static string[] ingredientsTitels = { "Meat", "Cheese", "Bread", "Dressing And Dip", "Salad", "Fruits" };
         static string[] titel;
-        static string tabel;
+        static string table;
         /// <summary>
         /// 
         /// </summary>
@@ -22,7 +23,7 @@ namespace mcdonalds_Lager.Logic
             titel = mainMenuTitels;
             box box = Gui.DrawMenu(titel);
 
-            int x = 0;
+            int cursorLoction = 0;
             while (true)
             {
                 if (titel == mainMenuTitels || titel == drinksMenuTitels || titel == ingredientsTitels)
@@ -30,31 +31,59 @@ namespace mcdonalds_Lager.Logic
                     switch (Console.ReadKey(true).Key)
                     {
                         case ConsoleKey.LeftArrow:
-                            if (x > 0)
+                            if (cursorLoction > 0)
                             {
-                                ConsoleDraw.Draw(titel[x], box.ySplit[x] + 1, box.ySize + 1, ConsoleColor.White);
-                                x--;
-                                ConsoleDraw.Draw(titel[x], box.ySplit[x] + 1, box.ySize + 1, ConsoleColor.DarkRed);
+                                ConsoleDraw.Draw(titel[cursorLoction], box.ySplit[cursorLoction] + 1, box.ySize + 1, ConsoleColor.White);
+                                cursorLoction--;
+                                ConsoleDraw.Draw(titel[cursorLoction], box.ySplit[cursorLoction] + 1, box.ySize + 1, ConsoleColor.DarkRed);
                             }
                             break;
                         case ConsoleKey.RightArrow:
-                            if (x < box.ySplit.Count - 1)
+                            if (cursorLoction < box.ySplit.Count - 1)
                             {
-                                ConsoleDraw.Draw(titel[x], box.ySplit[x] + 1, box.ySize + 1, ConsoleColor.White);
-                                x++;
-                                ConsoleDraw.Draw(titel[x], box.ySplit[x] + 1, box.ySize + 1, ConsoleColor.DarkRed);
+                                ConsoleDraw.Draw(titel[cursorLoction], box.ySplit[cursorLoction] + 1, box.ySize + 1, ConsoleColor.White);
+                                cursorLoction++;
+                                ConsoleDraw.Draw(titel[cursorLoction], box.ySplit[cursorLoction] + 1, box.ySize + 1, ConsoleColor.DarkRed);
                             }
                             break;
                         case ConsoleKey.Enter:
                             Console.Clear();
-                            box = NewMenuController(box, x);
-                            
-                            x = 0;
+                            box = NewMenuController(box, cursorLoction);               
+                            cursorLoction = 0;
                             break;
                         default:
                             break;
                     }
-                }               
+                }
+                else
+                {
+                    switch (Console.ReadKey(true).Key)
+                    {
+                        case ConsoleKey.UpArrow:
+                            if (cursorLoction > 0)
+                            {
+                                ConsoleDraw.Draw("buy", box.ySplit[0] + 1, box.xSplit[cursorLoction] + 1, ConsoleColor.White);
+                                cursorLoction--;
+                                ConsoleDraw.Draw("buy", box.ySplit[0] + 1, box.xSplit[cursorLoction] + 1, ConsoleColor.DarkRed);
+                            }
+                            break;
+                        case ConsoleKey.DownArrow:
+                            if (cursorLoction < box.xSplit.Count - 1)
+                            {
+                                ConsoleDraw.Draw("buy", box.ySplit[0] + 1, box.xSplit[cursorLoction] + 1, ConsoleColor.White);
+                                cursorLoction++;
+                                ConsoleDraw.Draw("buy", box.ySplit[0] + 1, box.xSplit[cursorLoction] + 1, ConsoleColor.DarkRed);
+                            }
+                            break;
+                        case ConsoleKey.Enter:
+                            Console.Clear();
+                            box = NewMenuController(box, cursorLoction);
+                            cursorLoction = 0;
+                            break;
+                        default:
+                            break;
+                    }
+                }
             }
         }
         private static box NewMenuController(box box,int x)
@@ -79,38 +108,9 @@ namespace mcdonalds_Lager.Logic
 
             else if (titel == drinksMenuTitels)
             {
-                switch (x)
-                {
-                    case 0:
-                        tabel = "Water";
-                        box = Gui.DrawBuyMenu(titel);
-                        break;
-                    case 1:
-                        tabel = "juice";
-                        box = Gui.DrawBuyMenu(titel);
-                        break;
-                    case 2:
-                        tabel = "soda";
-                        box = Gui.DrawBuyMenu(titel);
-                        break;
-                    case 3:
-                        tabel = "frappe";
-                        box = Gui.DrawBuyMenu(titel);
-                        break;
-                    case 4:
-                        tabel = "milkshake";
-                        box = Gui.DrawBuyMenu(titel);
-                        break;
-                    case 5:
-                        tabel = "coffee";
-                        box = Gui.DrawBuyMenu(titel);
-                        break;
-                    case 6:
-                        tabel = "alcohol";
-                        titel = new string[] { "Buy", "Name", "Litres" };
-                        box = Gui.DrawBuyMenu(titel);
-                        break;
-                }
+                string[] tableList = { "Water", "juice", "soda", "frappe", "milkshake", "coffee", "alcohol" };
+                titel = new string[0];
+                box = Gui.DrawBuyMenu(GetDatabaseItems(tableList[x]));
             }
 
             if (titel == ingredientsTitels)
@@ -122,5 +122,11 @@ namespace mcdonalds_Lager.Logic
 
                     return box;
         }
+        private static DataTable GetDatabaseItems(string table)
+        {
+            var dt = DataAccessLayer.GetData($"SELECT * FROM {table}");
+            return dt;
+        }
     }
+
 }
