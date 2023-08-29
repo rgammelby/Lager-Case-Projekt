@@ -101,13 +101,13 @@ CREATE TABLE Alcohol (
 
 CREATE TABLE Drinks (
 	drink_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
-	water_id TINYINT FOREIGN KEY REFERENCES Water(water_id) NOT NULL,
-	juice_id TINYINT FOREIGN KEY REFERENCES Juice(juice_id) NOT NULL,
-	soda_id TINYINT FOREIGN KEY REFERENCES Soda(soda_id) NOT NULL,
-	frappe_id TINYINT FOREIGN KEY REFERENCES Frappe(frappe_id) NOT NULL,
-	milkshake_id TINYINT FOREIGN KEY REFERENCES Milkshake(milkshake_id) NOT NULL,
-	coffee_id TINYINT FOREIGN KEY REFERENCES Coffee(coffee_id) NOT NULL,
-	alcohol_id TINYINT FOREIGN KEY REFERENCES Alcohol(alcohol_id) NOT NULL
+	water_id TINYINT FOREIGN KEY REFERENCES Water(water_id),
+	juice_id TINYINT FOREIGN KEY REFERENCES Juice(juice_id),
+	soda_id TINYINT FOREIGN KEY REFERENCES Soda(soda_id),
+	frappe_id TINYINT FOREIGN KEY REFERENCES Frappe(frappe_id),
+	milkshake_id TINYINT FOREIGN KEY REFERENCES Milkshake(milkshake_id),
+	coffee_id TINYINT FOREIGN KEY REFERENCES Coffee(coffee_id),
+	alcohol_id TINYINT FOREIGN KEY REFERENCES Alcohol(alcohol_id)
 );
 
 -- MISCELLANEOUS
@@ -135,17 +135,17 @@ CREATE TABLE Lids (
 
 CREATE TABLE Service_Items (
 	item_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
-	bags TINYINT NOT NULL,
-	straws TINYINT NOT NULL,
-	trays TINYINT NOT NULL,
-	cups TINYINT NOT NULL,
-	lids TINYINT NOT NULL
+	bags TINYINT,
+	straws TINYINT,
+	trays TINYINT,
+	cups TINYINT,
+	lids TINYINT
 );
 
 CREATE TABLE Orders (
 	order_id INT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
-	ingredient_id TINYINT FOREIGN KEY REFERENCES Ingredients(ingredient_id) NOT NULL,
-	drink_id TINYINT FOREIGN KEY REFERENCES Drinks(drink_id) NOT NULL,
-	side_id TINYINT FOREIGN KEY REFERENCES Sides(side_id) NOT NULL,
-	item_id TINYINT FOREIGN KEY REFERENCES Service_Items(item_id) NOT NULL
+	ingredient_id TINYINT FOREIGN KEY REFERENCES Ingredients(ingredient_id),
+	drink_id TINYINT FOREIGN KEY REFERENCES Drinks(drink_id),
+	side_id TINYINT FOREIGN KEY REFERENCES Sides(side_id),
+	item_id TINYINT FOREIGN KEY REFERENCES Service_Items(item_id)
 );
