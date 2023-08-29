@@ -13,6 +13,7 @@ namespace mcdonalds_Lager
     {
         public static void Main()
         {
+            Console.CursorVisible = false;
             //SqlConnection s = DataAccessLayer.GetConnection();
             //s.Open();
             
