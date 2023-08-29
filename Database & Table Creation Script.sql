@@ -40,7 +40,7 @@ CREATE TABLE Fruit_And_Veg (
 
 
 CREATE TABLE Ingredients (
-	ingredient_id TINYINT PRIMARY KEY IDENTITY(1, 1) NOT NULL,
+	ingredient_id INT PRIMARY KEY IDENTITY(1, 1) NOT NULL,
 	meat TINYINT FOREIGN KEY REFERENCES Meat(meat_id),
 	cheese TINYINT FOREIGN KEY REFERENCES Cheese(cheese_id),
 	bread TINYINT FOREIGN KEY REFERENCES Bread(bread_id),
@@ -100,7 +100,7 @@ CREATE TABLE Alcohol (
 );
 
 CREATE TABLE Drinks (
-	drink_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
+	drink_id INT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
 	water_id TINYINT FOREIGN KEY REFERENCES Water(water_id),
 	juice_id TINYINT FOREIGN KEY REFERENCES Juice(juice_id),
 	soda_id TINYINT FOREIGN KEY REFERENCES Soda(soda_id),
@@ -134,7 +134,7 @@ CREATE TABLE Lids (
 );
 
 CREATE TABLE Service_Items (
-	item_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
+	item_id INT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
 	bags TINYINT,
 	straws TINYINT,
 	trays TINYINT,
