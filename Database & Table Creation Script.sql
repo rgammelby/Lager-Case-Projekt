@@ -149,12 +149,3 @@ CREATE TABLE Orders (
 	side_id TINYINT FOREIGN KEY REFERENCES Sides(side_id) NOT NULL,
 	item_id TINYINT FOREIGN KEY REFERENCES Service_Items(item_id) NOT NULL
 );
-
-
-insert into coffee (coffee_type, litres)
-values ('Arabica', 0.5),
-    ('Espresso', 0.3),
-    ('Mocca', 0.3),
-    ('Americano', 0.5),
-    ('Cappuccino', 0.3);
-select * from coffee
