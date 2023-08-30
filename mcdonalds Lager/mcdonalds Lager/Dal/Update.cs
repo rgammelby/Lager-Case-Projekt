@@ -13,7 +13,7 @@ namespace mcdonalds_Lager.Dal
         static void UpdateData(string table, int id, int amount)
         {
             // amount or litres
-            var aol = "amount";
+            var aol = "";
 
             if (table.ToLower() == "water")
                 aol = "amount";
@@ -40,7 +40,7 @@ namespace mcdonalds_Lager.Dal
             }
 
             // testing
-            Console.Write($"\nOld amount: {oldAmount} \nAmount withdrawn: {amount} \nNew amount: {newAmount} \n");
+            //Console.Write($"\nOld amount: {oldAmount} \nAmount withdrawn: {amount} \nNew amount: {newAmount} \n");
 
             // update script
             var script = "USE [Storage] " +
