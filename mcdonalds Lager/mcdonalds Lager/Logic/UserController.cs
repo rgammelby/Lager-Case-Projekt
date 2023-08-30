@@ -156,7 +156,7 @@ namespace mcdonalds_Lager.Logic
                 //Table Names do not remove
                 string[] tableList = { "Water", "juice", "soda", "frappe", "milkshake", "coffee", "alcohol" };
                 titel = new string[0];
-                box = TableMenu.DrawTableMenu(Getdata.GetDatabaseItems(tableList[x]));
+                box = TableMenu.DrawTableMenu(LogicData.GetDatabaseItems(tableList[x]));
             }
 
             else if (titel == ingredientsTitels)
@@ -164,7 +164,7 @@ namespace mcdonalds_Lager.Logic
                 //Table Names do not remove
                 string[] tableList = { "meat", "cheese", "bread", "dad", "salad", "fav" };
                 titel = new string[0];
-                box = TableMenu.DrawTableMenu(Getdata.GetDatabaseItems(tableList[x]));
+                box = TableMenu.DrawTableMenu(LogicData.GetDatabaseItems(tableList[x]));
             }
             return box;
         }

@@ -45,7 +45,7 @@
   <ItemGroup>
     <Compile Include="Dal\Validators.cs" />
     <Compile Include="Logic\Buy.cs" />
-    <Compile Include="Logic\Getdata.cs" />
+    <Compile Include="Logic\LogicData.cs" />
     <Compile Include="Logic\UserController.cs" />
     <Compile Include="Præsentation\BuyMenu.cs" />
     <Compile Include="Præsentation\ConsoleDraw.cs" />
