@@ -16,7 +16,7 @@ namespace mcdonalds_Lager.Dal
             for (int i = 0; i < input.Length; i++)
             {
                 // if each character of string input is NOT a letter, punctuation or whitespace
-                if (!char.IsLetter(input[i]) && !char.IsPunctuation(input[i]) && !char.IsWhiteSpace(input[i]))
+                if (char.IsDigit(input[i]))
                     valid = true;
 
                 // if a character of string input IS punctuation, but is full stop or comma
