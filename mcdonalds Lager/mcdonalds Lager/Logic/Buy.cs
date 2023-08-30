@@ -10,7 +10,10 @@ namespace mcdonalds_Lager.Logic
 {
     internal class Buy
     {
-        // gets input
+        /// <summary>
+        /// gets User input
+        /// </summary>
+        /// <returns></returns>
         public static string GetInput()
         {
             var input = Console.ReadLine();
@@ -38,7 +41,7 @@ namespace mcdonalds_Lager.Logic
 
             var inputI = 0;
             var inputF = 0.0;
-            bool inputIsInt;
+            bool inputIsInt = false;
 
             try
             {
@@ -48,10 +51,20 @@ namespace mcdonalds_Lager.Logic
             }
             catch
             {
-                // if not able to convert input to int, return float
-                inputF = float.Parse(input);
-                inputIsInt = false;
+                try
+                {
+                    // if not able to convert input to int, return float
+                    inputF = float.Parse(input);
+                }
+                catch
+                {
+                    InputError();
+                    Console.ReadLine();
+                    Input();
+
+                }
             }
+
 
             // returns input in int or float format
             if (inputIsInt)

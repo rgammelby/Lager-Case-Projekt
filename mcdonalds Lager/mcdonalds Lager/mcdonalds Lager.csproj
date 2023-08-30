@@ -47,13 +47,14 @@
     <Compile Include="Logic\Buy.cs" />
     <Compile Include="Logic\LogicData.cs" />
     <Compile Include="Logic\UserController.cs" />
-    <Compile Include="Præsentation\BuyMenu.cs" />
+    <Compile Include="Præsentation\Menus\BuyMenu.cs" />
     <Compile Include="Præsentation\ConsoleDraw.cs" />
     <Compile Include="Dal\DataAccessLayer.cs" />
-    <Compile Include="Præsentation\Gui.cs" />
+    <Compile Include="Præsentation\Menus\MainMenu.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Præsentation\TableMenu.cs" />
+    <Compile Include="Præsentation\Menus\OrderMenu.cs" />
+    <Compile Include="Præsentation\Menus\TableMenu.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

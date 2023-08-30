@@ -1,4 +1,5 @@
 ﻿using mcdonalds_Lager.Præsentation;
+using mcdonalds_Lager.Præsentation.Menus;
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -14,14 +15,24 @@ namespace mcdonalds_Lager.Logic
         static string[] drinksMenuTitels = { "Water", "Juice", "Soda", "Frappe", "Milkshake", "Coffe", "Alcohol" };
         static string[] ingredientsTitels = { "Meat", "Cheese", "Bread", "Dressing And Dip", "Salad", "Fruits" };
         static string[] titel;
+        static string table;
         static int cursorLoction = 0;
         /// <summary>
         /// 
         /// </summary>
         #region GuiControllers
-        private static void BuyController(box box)
-        {
 
+        private static void OrderController()
+        {
+            while (true)
+            {
+                switch (Console.ReadKey(true).Key)
+                {
+                    case ConsoleKey.Backspace:
+                        MainController();
+                        break;
+                }
+            }
         }
         private static void TableController(box box)
         {
@@ -45,6 +56,7 @@ namespace mcdonalds_Lager.Logic
                         cursorLoction = 0;
                         
                         Buy.Input();
+                        // table cursorLoction + 1
                         MainController();
                         break;
                     case ConsoleKey.Backspace:
@@ -73,7 +85,7 @@ namespace mcdonalds_Lager.Logic
             Console.Clear();
             cursorLoction = 0;
             titel = mainMenuTitels;
-            box box = Gui.DrawMenu(titel);
+            box box = MainMenu.DrawMenu(titel);
             while (true)
             {
                 if (titel == mainMenuTitels || titel == drinksMenuTitels || titel == ingredientsTitels)
@@ -132,14 +144,15 @@ namespace mcdonalds_Lager.Logic
                 {
                     case 0:
                         titel = ingredientsTitels;
-                        box = Gui.DrawMenu(ingredientsTitels);
+                        box = MainMenu.DrawMenu(ingredientsTitels);
                         break;
                     case 1:
-                        box = Gui.DrawMenu(mainMenuTitels);
+                        OrderMenu.DrawOrderMenu();
+                        OrderController();
                         break;
                     case 2:
                         titel = drinksMenuTitels;
-                        box = Gui.DrawMenu(drinksMenuTitels);
+                        box = MainMenu.DrawMenu(drinksMenuTitels);
                         break;
                     //If there is no problem in the code will this never run
                     default:
@@ -156,15 +169,17 @@ namespace mcdonalds_Lager.Logic
                 //Table Names do not remove
                 string[] tableList = { "Water", "juice", "soda", "frappe", "milkshake", "coffee", "alcohol" };
                 titel = new string[0];
-                box = TableMenu.DrawTableMenu(LogicData.GetDatabaseItems(tableList[x]));
+                table = tableList[x];
+                box = TableMenu.DrawTableMenu(LogicData.GetDatabaseItems(table));
             }
 
             else if (titel == ingredientsTitels)
             {
                 //Table Names do not remove
-                string[] tableList = { "meat", "cheese", "bread", "dad", "salad", "fav" };
+                string[] tableList = { "meat", "cheese", "bread", "Dressing_And_Dip", "salad", "Fruit_And_Veg" };
                 titel = new string[0];
-                box = TableMenu.DrawTableMenu(LogicData.GetDatabaseItems(tableList[x]));
+                table = tableList[x];
+                box = TableMenu.DrawTableMenu(LogicData.GetDatabaseItems(table));
             }
             return box;
         }
