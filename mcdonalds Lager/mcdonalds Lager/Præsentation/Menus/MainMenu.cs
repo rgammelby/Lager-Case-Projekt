@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace mcdonalds_Lager
 {
-    public class Gui
+    public class MainMenu
     {
 
         /// <summary>

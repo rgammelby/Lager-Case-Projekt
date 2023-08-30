@@ -65,7 +65,7 @@ namespace mcdonalds_Lager.Præsentation
         /// Draws the overlaping lines in the box
         /// </summary>
         /// <param name="box"></param>
-        private static void DrawHitOnLine(box box)
+        private static void DrawOverlapingLine(box box)
         {
             for (int i = 0; i < box.xSplit.Count(); i++)
             {
@@ -128,7 +128,7 @@ namespace mcdonalds_Lager.Præsentation
             DrawHorizontalLine(box.xSize, box.xStartPosition, box.yStartPosition + splitAt);
             Draw('╣', box.xStartPosition + box.xSize, box.yStartPosition + splitAt, ConsoleColor.White);
             //Draws the overlap chars
-            DrawHitOnLine(box);
+            DrawOverlapingLine(box);
             return box;
         }
         #endregion
