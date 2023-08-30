@@ -19,8 +19,11 @@ namespace mcdonalds_Lager
         }
 
         // method for freestyle script execution, accepts a script as parameter
-        public static void ExecuteScript(string script, SqlConnection s)
+        public static void ExecuteScript(string script)
         {
+            SqlConnection s = GetConnection();
+            s.Open();
+
             StringBuilder sb = new StringBuilder();
             sb.Append(script);
 
@@ -36,7 +39,7 @@ namespace mcdonalds_Lager
         {
             SqlConnection s = GetConnection();
             s.Open();
-            ExecuteScript(script, s);
+            ExecuteScript(script);
 
             DataTable dt = new DataTable();  // DataTable declaration
             SqlDataAdapter sda = new SqlDataAdapter(script, s);

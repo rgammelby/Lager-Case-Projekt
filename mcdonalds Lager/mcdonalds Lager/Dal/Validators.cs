@@ -9,7 +9,7 @@ namespace mcdonalds_Lager.Dal
     internal class Validators
     {
         // evalutes input validity true/false
-        static bool InputValidator(string input)
+        public static bool InputValidator(string input)
         {
             var valid = false;
 
