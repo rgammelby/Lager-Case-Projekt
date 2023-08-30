@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dal\Validators.cs" />
+    <Compile Include="Logic\Buy.cs" />
     <Compile Include="Logic\Getdata.cs" />
     <Compile Include="Logic\UserController.cs" />
     <Compile Include="Præsentation\BuyMenu.cs" />
@@ -51,6 +53,7 @@
     <Compile Include="Præsentation\Gui.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Præsentation\TableMenu.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
