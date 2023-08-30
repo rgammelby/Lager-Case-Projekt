@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\mcdonalds Lager",
-    "\\mcdonalds Lager\\mcdonalds Lager"
+    "\\mcdonalds Lager\\mcdonalds Lager",
+    "\\mcdonalds Lager\\mcdonalds Lager\\Logic"
   ],
-  "SelectedNode": "\\mcdonalds Lager\\mcdonalds Lager.sln",
+  "SelectedNode": "\\mcdonalds Lager\\mcdonalds Lager\\Logic\\UserController.cs",
   "PreviewInSolutionExplorer": false
 }
