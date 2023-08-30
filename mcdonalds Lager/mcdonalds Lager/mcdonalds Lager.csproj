@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Logic\Getdata.cs" />
     <Compile Include="Logic\UserController.cs" />
     <Compile Include="Præsentation\BuyMenu.cs" />
     <Compile Include="Præsentation\ConsoleDraw.cs" />
