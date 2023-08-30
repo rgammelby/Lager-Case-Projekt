@@ -50,43 +50,5 @@ namespace mcdonalds_Lager
 
             return dt;
         }
-        // PRINT
-        /*public static void Print(SqlConnection s, string table)
-        {
-            var x = 0;
-
-            // whatever select script, in this case selects & prints top 5 entries (coffee_type and litres) from the coffee table (hehe) 
-            var script = $"SELECT * FROM {table}";
-
-            var dt = GetData(script);
-
-            Console.WriteLine("\n");
-
-            // prints column names
-            for (int i = 1; i < dt.Columns.Count; i++)
-            {
-                Console.Write($"{dt.Columns[i]}    ");
-            }
-
-            Console.WriteLine("\n");
-
-            // prints extracted data, spaced by 15 pr. column.
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                var cursorLeft = 0;
-                for (int n = 1; n < dt.Rows[i].ItemArray.Length; n++)
-                {
-                    if (n % dt.Rows.Count - 1 == 0)
-                        Console.CursorLeft = cursorLeft;
-                    else
-                        Console.CursorLeft = cursorLeft += 15;
-
-                    Console.Write($"{dt.Rows[i].ItemArray[n]}");
-                }
-                Console.Write("\n");
-            }
-        }
-        */
-
     }
 }

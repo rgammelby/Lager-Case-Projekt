@@ -1,4 +1,5 @@
-﻿using System;
+﻿using mcdonalds_Lager.Præsentation;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -19,9 +20,11 @@ namespace mcdonalds_Lager.Logic
             var dt = DataAccessLayer.GetData($"SELECT * FROM {table}");
             return dt;
         }
-        public static void ss(string table,int id, int amount)
+
+        public static void WithdrawError()
         {
-            //var dt = DataAccessLayer.GetData($"SELECT * FROM {table}");
+            ConsoleDraw.Draw("You cannot withdraw more items than there are currently present in the database.",0,3, ConsoleColor.Red);
+            Console.ReadLine();
         }
     }
 }

@@ -20,7 +20,7 @@ namespace mcdonalds_Lager.Dal
                     valid = true;
 
                 // if a character of string input IS punctuation, but is full stop or comma
-                else if (char.IsPunctuation(input[i]) && (input[i] == '.' || input[i] == ','))
+                else if (char.IsPunctuation(input[i]) && (input[i] == '.'))
                     valid = true;
 
                 else

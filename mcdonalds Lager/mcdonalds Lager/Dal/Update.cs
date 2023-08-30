@@ -10,7 +10,7 @@ namespace mcdonalds_Lager.Dal
     {
         #region Update
 
-        static void UpdateData(string table, int id, int amount)
+        public static bool UpdateData(string table, int id, double amount,bool add)
         {
             // amount or litres
             var aol = "";
@@ -27,38 +27,42 @@ namespace mcdonalds_Lager.Dal
             var dt = DataAccessLayer.GetData(getDataScript);
 
             // amount before update
-            var oldAmount = Convert.ToInt32(dt.Rows[0].ItemArray[0]);
+            var oldAmount = Convert.ToDouble(dt.Rows[0].ItemArray[0]);
+            var newAmount = 0.0;
+            if (add)
+            {
+                // updated amount
+                newAmount = oldAmount + Convert.ToDouble(amount);
+            }
+            else
+            {
+                // updated amount
+                newAmount = oldAmount - Convert.ToDouble(amount);
+            }
 
-            // updated amount
-            var newAmount = Convert.ToInt32(oldAmount) - amount;
 
             // display error message if attempting to withdraw more items than are present in storage
-            if (newAmount < 0)
-            {
-                WithdrawError(oldAmount, amount);
-                return;
+            if (newAmount < 0 || newAmount >= 32000)
+            {             
+                return false;
             }
+
 
             // testing
             //Console.Write($"\nOld amount: {oldAmount} \nAmount withdrawn: {amount} \nNew amount: {newAmount} \n");
 
+            string newAmountstring = newAmount.ToString().Replace(',','.');
             // update script
             var script = "USE [Storage] " +
                 $"UPDATE {table} " +
-                $"SET {aol} = {newAmount} " +
+                $"SET {aol} = {newAmountstring} " +
                 $"WHERE {table}_id = {id} ";
 
             DataAccessLayer.ExecuteScript(script);
+            return true;
         }
 
-        static void WithdrawError(int oldAmount, int amount)
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"You cannot withdraw more items than there are currently present in the database. \n" +
-                $"There are currently {oldAmount} units in storage. You are trying to withdraw {amount} units. ");
-            Console.ResetColor();
-            Console.ReadLine();
-        }
+
 
         #endregion
     }
