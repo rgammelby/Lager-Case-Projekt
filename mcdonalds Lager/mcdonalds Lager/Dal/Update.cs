@@ -13,18 +13,14 @@ namespace mcdonalds_Lager.Dal
         public static bool UpdateData(string table, int id, double amount,bool add)
         {
             // amount or litres
-            var aol = "";
-
-            if (table.ToLower() == "water")
-                aol = "amount";
-            else
-                aol = "litres";
+            var dt = DataAccessLayer.GetData($"SELECT * FROM {table} ");
+            var aol = dt.Columns[dt.Columns.Count - 1];
 
             var getDataScript = $"SELECT {aol} FROM {table} " +
                 $"WHERE {table}_id = '{id}'";
 
             // retrieves "old" data from database
-            var dt = DataAccessLayer.GetData(getDataScript);
+            var dts = DataAccessLayer.GetData(getDataScript);
 
             // amount before update
             var oldAmount = Convert.ToDouble(dt.Rows[0].ItemArray[0]);
