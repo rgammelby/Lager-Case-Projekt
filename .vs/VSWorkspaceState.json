@@ -3,8 +3,14 @@
     "",
     "\\mcdonalds Lager",
     "\\mcdonalds Lager\\mcdonalds Lager",
+<<<<<<< HEAD
+    "\\mcdonalds Lager\\mcdonalds Lager\\Logic"
+  ],
+  "SelectedNode": "\\mcdonalds Lager\\mcdonalds Lager\\Logic\\UserController.cs",
+=======
     "\\mcdonalds Lager\\mcdonalds Lager\\Dal"
   ],
   "SelectedNode": "\\mcdonalds Lager\\mcdonalds Lager\\Dal\\DataAccessLayer.cs",
+>>>>>>> e2d974be95bbd12a5cb516cb60ad013aaec50579
   "PreviewInSolutionExplorer": false
 }
