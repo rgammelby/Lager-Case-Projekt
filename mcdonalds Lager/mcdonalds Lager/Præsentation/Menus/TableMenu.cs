@@ -48,7 +48,7 @@ namespace mcdonalds_Lager.Præsentation
         }
         private static void DrawTitelsOnTableMenu(List<string> titel, box box)
         {
-            //Prints the titils in the box 
+            //Prints the titles in the box 
             for (int i = 0; i < titel.Count; i++)
             {
                 ConsoleDraw.Draw(titel[i], box.ySplit[i] + 1, box.yStartPosition + 1, ConsoleColor.White);
@@ -71,7 +71,7 @@ namespace mcdonalds_Lager.Præsentation
             }
             else
             {
-                ConsoleDraw.Draw("Ingen data :(", box.xStartPosition, box.yStartPosition + 3, ConsoleColor.White);
+                ConsoleDraw.Draw("Ingen data :-(", box.xStartPosition, box.yStartPosition + 3, ConsoleColor.White);
             }
         }
         private static void DrawDataToTableMenu(DataTable dt, box box)

@@ -8,8 +8,8 @@ namespace mcdonalds_Lager.Dal
 {
     internal class Update
     {
+        const int MAX_AMOUNT = 32000;
         #region Update
-
         public static bool UpdateData(string table, int id, double amount,bool add)
         {
             // amount or litres
@@ -42,18 +42,14 @@ namespace mcdonalds_Lager.Dal
 
 
             // display error message if attempting to withdraw more items than are present in storage
-            if (newAmount < 0 || newAmount >= 32000)
+            if (newAmount < 0 || newAmount >= MAX_AMOUNT)
             {             
                 return false;
             }
 
-
-            // testing
-            //Console.Write($"\nOld amount: {oldAmount} \nAmount withdrawn: {amount} \nNew amount: {newAmount} \n");
-
             string newAmountstring = newAmount.ToString().Replace(',','.');
             // update script
-            var script = "USE [Storage] " +
+            var script = "USE [StorageDB] " +
                 $"UPDATE {table} " +
                 $"SET {aol} = {newAmountstring} " +
                 $"WHERE {table}_id = {id} ";

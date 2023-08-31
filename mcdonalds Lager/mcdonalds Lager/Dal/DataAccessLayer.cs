@@ -15,7 +15,7 @@ namespace mcdonalds_Lager
         public static SqlConnection GetConnection()
         {
             // not to be included in final push; .gitignore
-            return new SqlConnection(@"Data Source = localhost; Initial Catalog = Storage; Trusted_Connection=true; TrustServerCertificate=true;");
+            return new SqlConnection(@"Data Source = localhost; Initial Catalog = StorageDB; Trusted_Connection=true; TrustServerCertificate=true;");
         }
 
         // method for freestyle script execution, accepts a script as parameter

@@ -10,7 +10,8 @@ namespace mcdonalds_Lager
 {
     public class MainMenu
     {
-
+        const int X_WIREFRAME_SIZE = 2;
+        const int Y_WIREFRAME_SIZE = 3;
         /// <summary>
         /// Draw alle the none database need menus
         /// </summary>
@@ -34,7 +35,7 @@ namespace mcdonalds_Lager
             {
                 sum += item.Length + 2;
             }
-            box = ConsoleDraw.DrawBox(sum, 2, 3, 2);
+            box = ConsoleDraw.DrawBox(sum, X_WIREFRAME_SIZE, Y_WIREFRAME_SIZE, 2);
             sum = 0;
             //splits up the box
             for (int i = 0; i < titel.Length - 1; i++)

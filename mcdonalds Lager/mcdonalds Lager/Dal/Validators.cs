@@ -19,7 +19,7 @@ namespace mcdonalds_Lager.Dal
                 if (char.IsDigit(input[i]))
                     valid = true;
 
-                // if a character of string input IS punctuation, but is full stop or comma
+                // if a character of string input IS punctuation, but is full stop
                 else if (char.IsPunctuation(input[i]) && (input[i] == '.'))
                     valid = true;
 

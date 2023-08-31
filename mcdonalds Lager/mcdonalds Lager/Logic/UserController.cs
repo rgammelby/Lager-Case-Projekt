@@ -19,11 +19,12 @@ namespace mcdonalds_Lager.Logic
         static string table;
         static int yCursorLoction = 0; 
         static int xCursorLoction = 0;
-        /// <summary>
-        /// 
-        /// </summary>
-        #region GuiControllers
 
+        #region GuiControllers
+        /// <summary>
+        /// Controlls the user input on the order page 
+        /// The user can only go back to main menu in order
+        /// </summary>
         private static void OrderController()
         {
             while (true)
@@ -36,6 +37,9 @@ namespace mcdonalds_Lager.Logic
                 }
             }
         }
+        /// <summary>
+        /// Controlls movement from the users input
+        /// </summary>
         public static void MainAndTableController()
         {
 
@@ -79,7 +83,6 @@ namespace mcdonalds_Lager.Logic
                         {
                             ControlleMover(1, box, false);
                         }
-
                         break;
                     case ConsoleKey.Enter:
 
@@ -93,17 +96,20 @@ namespace mcdonalds_Lager.Logic
                             box = MenuTitelAndTableController(box, xCursorLoction);
                         }
                         else
+                        //Buy or take buttons
                         {
-                            if (yCursorLoction == 0)
+                            //buy
+                            if (xCursorLoction == 0)
                             {
-                                if (Update.UpdateData(table, xCursorLoction + 1, Buy.Input(), true) == false)
+                                if (Update.UpdateData(table, yCursorLoction + 1, Buy.Input(), true) == false)
                                 {
                                     LogicData.WithdrawError();
                                 }
                             }
+                            //take
                             else
                             {
-                                if (Update.UpdateData(table, xCursorLoction + 1, Buy.Input(), false) == false)
+                                if (Update.UpdateData(table, yCursorLoction + 1, Buy.Input(), false) == false)
                                 {
                                     LogicData.WithdrawError();
                                 }
@@ -222,9 +228,5 @@ namespace mcdonalds_Lager.Logic
             }
             return box;
         }
-
-
     }
-
-
 }
