@@ -31,149 +31,153 @@ namespace mcdonalds_Lager.Logic
                 switch (Console.ReadKey(true).Key)
                 {
                     case ConsoleKey.Backspace:
-                        MainController();
+                        MainAndTableController();
                         break;
                 }
             }
         }
-        private static void TableController(box box)
+        public static void MainAndTableController()
         {
+
+            Console.Clear();
+            xCursorLoction = 0;
+            titel = mainMenuTitels;
+            box box = MainMenu.DrawMenu(titel);
             while (true)
             {
                 switch (Console.ReadKey(true).Key)
                 {
                     case ConsoleKey.UpArrow:
-                        if (yCursorLoction > 0)
+                        if (yCursorLoction > 0 && titel != mainMenuTitels && titel != drinksMenuTitels && titel != ingredientsTitels)
                         {
-                            BuyControllerMover(-1, box,true);
+                            ControlleMover(-1, box,true);
                         }
                         break;
                     case ConsoleKey.DownArrow:
-                        if (yCursorLoction < box.xSplit.Count - 1)
+                        if (yCursorLoction < box.xSplit.Count - 1 && titel != mainMenuTitels && titel != drinksMenuTitels && titel != ingredientsTitels) 
                         {
-                            BuyControllerMover(1,box, true);
+                            ControlleMover(1,box, true);
                         }
                         break;
                     case ConsoleKey.LeftArrow:
                         if (xCursorLoction > 0)
                         {
-                            BuyControllerMover(-1, box, false);
+                            ControlleMover(-1, box, false);
                         }
                         break;
                     case ConsoleKey.RightArrow:
-                        if (xCursorLoction < 1)
+                        if (titel != mainMenuTitels && titel != drinksMenuTitels && titel != ingredientsTitels)
                         {
-                            BuyControllerMover(1, box, false);
+                            if (xCursorLoction < 1)
+                            {
+                                ControlleMover(1, box, false);
+                            }
+                            break;
                         }
+                        //used for the table menus
+                        if (xCursorLoction < box.ySplit.Count - 1)
+                        {
+                            ControlleMover(1, box, false);
+                        }
+
                         break;
                     case ConsoleKey.Enter:
-                        if(xCursorLoction == 0)
+
+                        if (titel == mainMenuTitels)
                         {
-                            if (Update.UpdateData(table, yCursorLoction + 1, Buy.Input(), true) == false)
-                            {
-                                LogicData.WithdrawError();
-                            }
+                            box = MenuTitelAndTableController(box, xCursorLoction);
+                        }
+
+                        else if (titel == drinksMenuTitels || titel == ingredientsTitels)
+                        {
+                            box = MenuTitelAndTableController(box, xCursorLoction);
                         }
                         else
                         {
-                            if (Update.UpdateData(table, yCursorLoction + 1, Buy.Input(), false) == false)
+                            if (yCursorLoction == 0)
                             {
-                                LogicData.WithdrawError();
+                                if (Update.UpdateData(table, xCursorLoction + 1, Buy.Input(), true) == false)
+                                {
+                                    LogicData.WithdrawError();
+                                }
                             }
+                            else
+                            {
+                                if (Update.UpdateData(table, xCursorLoction + 1, Buy.Input(), false) == false)
+                                {
+                                    LogicData.WithdrawError();
+                                }
+                            }
+
                         }
+
 
 
                         yCursorLoction = 0;
                         xCursorLoction = 0;
-                        MainController();
                         break;
                     case ConsoleKey.Backspace:
                         Console.Clear();
-                        MainController();
+                        MainAndTableController();
                         break;
                     default:
                         break;
                 }
             }
         }
+        #region MoversForControllers
         /// <summary>
         /// Moves the red titel and makes the old white 
         /// </summary>
         /// <param name="moved"></param>
         /// <param name="box"></param>
-        private static void BuyControllerMover(int moved, box box,bool side)
+        private static void ControlleMover(int moved, box box,bool side)
+        {
+            
+            if (titel == mainMenuTitels || titel == drinksMenuTitels || titel == ingredientsTitels)
+            {
+                MainControllerMover(moved, box);
+                    return;
+            }
+            TableControllerMover(moved, box, side);
+        }
+
+        private static void TableControllerMover(int moved, box box, bool side)
         {
             string[] strings = { "Buy", "Take" };
-            ConsoleDraw.Draw(strings[xCursorLoction], box.ySplit[xCursorLoction] + 1, box.xSplit[yCursorLoction] + 1, ConsoleColor.White);
-            if (side)
+            if (box.xSplit.Count > 0)
             {
-                yCursorLoction += moved;
-            }
-            else
-            {
-                xCursorLoction += moved;
-            }
-            ConsoleDraw.Draw(strings[xCursorLoction], box.ySplit[xCursorLoction] + 1, box.xSplit[yCursorLoction] + 1, ConsoleColor.DarkRed);
-        }
-
-        public static void MainController()
-        {
-            Console.Clear();
-            yCursorLoction = 0;
-            titel = mainMenuTitels;
-            box box = MainMenu.DrawMenu(titel);
-            while (true)
-            {
-                if (titel == mainMenuTitels || titel == drinksMenuTitels || titel == ingredientsTitels)
+                ConsoleDraw.Draw(strings[xCursorLoction], box.ySplit[xCursorLoction] + 1, box.xSplit[yCursorLoction] + 1, ConsoleColor.White);
+                if (side)
                 {
-                    switch (Console.ReadKey(true).Key)
-                    {
-                        case ConsoleKey.LeftArrow:
-                            if (yCursorLoction > 0)
-                            {
-                                MainControllerMover(-1, box);
-                            }
-                            break;
-                        case ConsoleKey.RightArrow:
-                            if (yCursorLoction < box.ySplit.Count - 1)
-                            {
-                                MainControllerMover(1,box);
-                            }
-                            break;
-                        case ConsoleKey.Enter:
-                            
-                            Console.Clear();
-
-                            //Controlle for if you are in the last view for bofore the buy Gui/view
-                            if (titel == drinksMenuTitels || titel == ingredientsTitels)
-                            {
-                                box = MenuTitelAndTableController(box, yCursorLoction);
-                                yCursorLoction = 0;
-                                TableController(box);
-                            }
-                            //Gets the new menu
-                            box = MenuTitelAndTableController(box, yCursorLoction);
-                            yCursorLoction = 0;
-                            break;
-                    }
+                    yCursorLoction += moved;
                 }
+                else
+                {
+                    xCursorLoction += moved;
+                }
+                ConsoleDraw.Draw(strings[xCursorLoction], box.ySplit[xCursorLoction] + 1, box.xSplit[yCursorLoction] + 1, ConsoleColor.DarkRed);
             }
+
         }
+
         /// <summary>
         /// Moves the red titel and makes the old white 
         /// </summary>
         /// <param name="moved"></param>
         /// <param name="box"></param>
+
         private static void MainControllerMover(int moved, box box)
         {
-            ConsoleDraw.Draw(titel[yCursorLoction], box.ySplit[yCursorLoction] + 1, box.ySize + 1, ConsoleColor.White);
-            yCursorLoction += moved;
-            ConsoleDraw.Draw(titel[yCursorLoction], box.ySplit[yCursorLoction] + 1, box.ySize + 1, ConsoleColor.DarkRed);
+            ConsoleDraw.Draw(titel[xCursorLoction], box.ySplit[xCursorLoction] + 1, box.ySize + 1, ConsoleColor.White);
+            xCursorLoction += moved;
+            ConsoleDraw.Draw(titel[xCursorLoction], box.ySplit[xCursorLoction] + 1, box.ySize + 1, ConsoleColor.DarkRed);
         }
-
+        #endregion
         #endregion
         private static box MenuTitelAndTableController(box box,int x)
         {
+            Console.Clear();
             if (titel == mainMenuTitels)
             {
                 switch (x)
