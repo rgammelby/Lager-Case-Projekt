@@ -108,7 +108,7 @@ namespace mcdonalds_Lager.Logic
                                     LogicData.WithdrawError();
                                 }
                             }
-
+                            MainAndTableController();
                         }
 
 
@@ -160,7 +160,6 @@ namespace mcdonalds_Lager.Logic
             }
 
         }
-
         /// <summary>
         /// Moves the red titel and makes the old white 
         /// </summary>

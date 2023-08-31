@@ -1,9 +1,9 @@
 -- TODO: Add logins & permissions,
 -- Stored Procedures
 -- Overvej, at oprette generelle Ingredient- og Drink_Type tabeller for at reducere antallet af tabeller i databasen.
--- Kig på flere CHECKS.
--- Lids 1:1 med cup_size, da de selvfølgelig skal passe sammen.
--- Indfør mellemtabel mellem Orders og Service_Items (M:N) ?
+-- Kig pÃ¥ flere CHECKS.
+-- Lids 1:1 med cup_size, da de selvfÃ¸lgelig skal passe sammen.
+-- IndfÃ¸r mellemtabel mellem Orders og Service_Items (M:N) ?
 -- Hvad sker der, hvis databasen allerede eksisterer?
 
 -- checks if database exists, creates database if not
@@ -169,7 +169,11 @@ CREATE TABLE Order_Details (
 	ingredient_id tinyint FOREIGN KEY REFERENCES Ingredients(ingredient_id),
 	drink_id tinyint FOREIGN KEY REFERENCES Drinks(drink_id),
 	side_id tinyint FOREIGN KEY REFERENCES Sides(side_id),
+<<<<<<< HEAD
 	item_id tinyint FOREIGN KEY REFERENCES Service_Items(item_id),
+=======
+	item_id tinyint FOREIGN KEY REFERENCES Service_Items(item_id)
+>>>>>>> f6d751ef833ec51a9e94152838e64723506f4d12
 );
 
 GO
@@ -199,7 +203,7 @@ VALUES ('Ketchup'),
 ('Cheddar Dip'),
 ('Garlic Dip'),
 ('Chili Mayo'),
-('Béarnaise Dip'),
+('BÃ©arnaise Dip'),
 ('BBQ Dip'),
 ('Sweet N Sour Dip'),
 ('Curry Sauce'),
@@ -298,8 +302,8 @@ VALUES ('Light Rum', 62),
 ('Vodka', 632),
 ('Whisky', 354),
 ('Tequila', 0),
-('Jägermeister', 21),
+('JÃ¤germeister', 21),
 ('Gin', 30),
 ('Baileys', 215),
 ('Malibu', 50),
-('Råstof', 0);
+('RÃ¥stof', 0);
