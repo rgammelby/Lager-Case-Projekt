@@ -1,9 +1,9 @@
 -- TODO: Add logins & permissions,
 -- Stored Procedures
 -- Overvej, at oprette generelle Ingredient- og Drink_Type tabeller for at reducere antallet af tabeller i databasen.
--- Kig på flere CHECKS.
--- Lids 1:1 med cup_size, da de selvfølgelig skal passe sammen.
--- Indfør mellemtabel mellem Orders og Service_Items (M:N) ?
+-- Kig pÃ¥ flere CHECKS.
+-- Lids 1:1 med cup_size, da de selvfÃ¸lgelig skal passe sammen.
+-- IndfÃ¸r mellemtabel mellem Orders og Service_Items (M:N) ?
 -- Hvad sker der, hvis databasen allerede eksisterer?
 
 -- checks if database exists, creates database if not
@@ -150,7 +150,7 @@ CREATE TABLE Service_Items (
 );
 
 CREATE TABLE Orders (
-	order_id int PRIMARY KEY IDENTITY(1, 1) NOT NULL,
+	order_id int PRIMARY KEY NOT NULL,
 	order_date date DEFAULT GETDATE(),
 	product varchar(64) NOT NULL,
 	amount int NOT NULL
@@ -160,13 +160,9 @@ CREATE TABLE Order_Details (
 	ordetail_id int PRIMARY KEY IDENTITY(1, 1) NOT NULL,
 	order_id int FOREIGN KEY REFERENCES Orders(order_id),
 	ingredient_id tinyint FOREIGN KEY REFERENCES Ingredients(ingredient_id),
-	ingredient_amount smallint NOT NULL DEFAULT 0,
 	drink_id tinyint FOREIGN KEY REFERENCES Drinks(drink_id),
-	drink_amount smallint NOT NULL DEFAULT 0,
 	side_id tinyint FOREIGN KEY REFERENCES Sides(side_id),
-	side_amount smallint NOT NULL DEFAULT 0,
-	item_id tinyint FOREIGN KEY REFERENCES Service_Items(item_id),
-	item_amount smallint NOT NULL DEFAULT 0
+	item_id tinyint FOREIGN KEY REFERENCES Service_Items(item_id)
 );
 
 GO
@@ -196,7 +192,7 @@ VALUES ('Ketchup'),
 ('Cheddar Dip'),
 ('Garlic Dip'),
 ('Chili Mayo'),
-('Béarnaise Dip'),
+('BÃ©arnaise Dip'),
 ('BBQ Dip'),
 ('Sweet N Sour Dip'),
 ('Curry Sauce'),
@@ -295,8 +291,8 @@ VALUES ('Light Rum', 62),
 ('Vodka', 632),
 ('Whisky', 354),
 ('Tequila', 0),
-('Jägermeister', 21),
+('JÃ¤germeister', 21),
 ('Gin', 30),
 ('Baileys', 215),
 ('Malibu', 50),
-('Råstof', 0);
+('RÃ¥stof', 0);
