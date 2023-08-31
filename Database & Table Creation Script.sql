@@ -7,43 +7,49 @@
 -- Hvad sker der, hvis databasen allerede eksisterer?
 
 -- checks if database exists, creates database if not
-IF db_id('Storage') IS NULL
+IF db_id('StorageDB') IS NULL
 	USE [master]
-	CREATE DATABASE [Storage]
+	CREATE DATABASE [StorageDB]
 
 GO
 
-USE [Storage]
+USE [StorageDB]
 
 -- INGREDIENT BIT
 CREATE TABLE Meat (
 	meat_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
-	meat_type VARCHAR(50) NOT NULL
+	meat_type VARCHAR(50) NOT NULL,
+	amount INT NOT NULL
 );
 
 CREATE TABLE Cheese (
 	cheese_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
-	cheese_type VARCHAR(50) NOT NULL
+	cheese_type VARCHAR(50) NOT NULL,
+	amount INT NOT NULL
 );
 
 CREATE TABLE Bread (
 	bread_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
-	bread_type VARCHAR(50) NOT NULL
+	bread_type VARCHAR(50) NOT NULL,
+	amount INT NOT NULL
 );
 
 CREATE TABLE Dressing_And_Dip (
 	dad_id TINYINT PRIMARY KEY IDENTITY(1, 1) NOT NULL,
-	dad_type VARCHAR(50) NOT NULL
+	dad_type VARCHAR(50) NOT NULL,
+	amount INT NOT NULL
 );
 
 CREATE TABLE Salad (
 	salad_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
-	salad_type VARCHAR(50) NOT NULL
+	salad_type VARCHAR(50) NOT NULL,
+	amount INT NOT NULL
 );
 
 CREATE TABLE Fruit_And_Veg (
 	fav_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
-	fav_type VARCHAR(50) NOT NULL
+	fav_type VARCHAR(50) NOT NULL,
+	amount INT NOT NULL
 );
 
 CREATE TABLE Ingredients (
@@ -53,7 +59,8 @@ CREATE TABLE Ingredients (
 	bread TINYINT FOREIGN KEY REFERENCES Bread(bread_id),
 	dad TINYINT FOREIGN KEY REFERENCES Dressing_And_Dip(dad_id),
 	salad TINYINT FOREIGN KEY REFERENCES Salad(salad_id),
-	fav TINYINT FOREIGN KEY REFERENCES Fruit_And_Veg(fav_id)
+	fav TINYINT FOREIGN KEY REFERENCES Fruit_And_Veg(fav_id),
+	amount INT NOT NULL
 );
 
 -- DRINKS BIT
@@ -150,7 +157,7 @@ CREATE TABLE Service_Items (
 );
 
 CREATE TABLE Orders (
-	order_id int PRIMARY KEY IDENTITY(1, 1) NOT NULL,
+	order_id int PRIMARY KEY NOT NULL,
 	order_date date DEFAULT GETDATE(),
 	product varchar(64) NOT NULL,
 	amount int NOT NULL
@@ -160,62 +167,58 @@ CREATE TABLE Order_Details (
 	ordetail_id int PRIMARY KEY IDENTITY(1, 1) NOT NULL,
 	order_id int FOREIGN KEY REFERENCES Orders(order_id),
 	ingredient_id tinyint FOREIGN KEY REFERENCES Ingredients(ingredient_id),
-	ingredient_amount smallint NOT NULL DEFAULT 0,
 	drink_id tinyint FOREIGN KEY REFERENCES Drinks(drink_id),
-	drink_amount smallint NOT NULL DEFAULT 0,
 	side_id tinyint FOREIGN KEY REFERENCES Sides(side_id),
-	side_amount smallint NOT NULL DEFAULT 0,
 	item_id tinyint FOREIGN KEY REFERENCES Service_Items(item_id),
-	item_amount smallint NOT NULL DEFAULT 0
 );
 
 GO
 
-INSERT INTO Meat (meat_type)
-VALUES ('Beef'),
-('Chicken'),
-('Fish'),
-('Vegan Beef'),
-('Vegan Chicken'),
-('Bacon');
+INSERT INTO Meat (meat_type, amount)
+VALUES ('Beef', 100),
+('Chicken', 100),
+('Fish', 100),
+('Vegan Beef', 100),
+('Vegan Chicken', 100),
+('Bacon', 100);
 
-INSERT INTO Cheese (cheese_type)
-VALUES ('Emmentaler Cheese'),
-('Cheddar Cheese');
+INSERT INTO Cheese (cheese_type, amount)
+VALUES ('Emmentaler Cheese', 100),
+('Cheddar Cheese', 100);
 
-INSERT INTO Bread (bread_type)
-VALUES ('Coarse Bun'),
-('Brioche Bun'),
-('Sesame Bun'),
-('Steamed Bun');
+INSERT INTO Bread (bread_type, amount)
+VALUES ('Coarse Bun', 100),
+('Brioche Bun', 100),
+('Sesame Bun', 100),
+('Steamed Bun', 100);
 
-INSERT INTO Dressing_And_Dip (dad_type)
-VALUES ('Ketchup'),
-('Pommes Frites Sauce'),
-('Mayo'),
-('Cheddar Dip'),
-('Garlic Dip'),
-('Chili Mayo'),
-('Béarnaise Dip'),
-('BBQ Dip'),
-('Sweet N Sour Dip'),
-('Curry Sauce'),
-('Mustard Dip'),
-('Big Mac Sauce'),
-('Cajun Sauce'),
-('Tasty Sauce'),
-('Tartar Sauce');
+INSERT INTO Dressing_And_Dip (dad_type, amount)
+VALUES ('Ketchup', 100),
+('Pommes Frites Sauce', 100),
+('Mayo', 100),
+('Cheddar Dip', 100),
+('Garlic Dip', 100),
+('Chili Mayo', 100),
+('Béarnaise Dip', 100),
+('BBQ Dip', 100),
+('Sweet N Sour Dip', 100),
+('Curry Sauce', 100),
+('Mustard Dip', 100),
+('Big Mac Sauce', 100),
+('Cajun Sauce', 100),
+('Tasty Sauce', 100),
+('Tartar Sauce', 100);
 
-INSERT INTO Salad (salad_type)
-VALUES ('Iceberg Lettuce');
+INSERT INTO Salad (salad_type, amount)
+VALUES ('Iceberg Lettuce, 100');
 
-INSERT INTO Fruit_And_Veg (fav_type)
-VALUES ('Tomatoes'),
-('Pickles'),
-('Red Onions'),
-('Pickled Red Onions'),
-('White Onions'),
-('Minced Onions');
+INSERT INTO Fruit_And_Veg (fav_type, amount)
+VALUES ('Tomatoes', 100),
+('Pickles', 100),
+('Red Onions', 100),
+('Pickled Red Onions', 100),
+('White Onions', 100),
+('Minced Onions', 100);
 
 INSERT INTO Water (amount, brand)
 VALUES (23, 'Aqua dOr');
@@ -274,11 +277,11 @@ VALUES ('Pommes Frites', 214),
 ('McFlurry Daim', 0),
 ('McFlurry Toms Turtles', 0),
 ('Sundae', 0),
-('Sundae m. Chocolate', 0),
-('Sundae m. Caramel', 0),
-('Sundae m. Sprinkles', 0),
-('Sundae m. Chocolatesauce and Sprinkles', 0),
-('Sundae with Caramelsauce and Sprinkles', 0);
+('Sundae w. Chocolate', 0),
+('Sundae w. Caramel', 0),
+('Sundae w. Sprinkles', 0),
+('Sundae w. Chocolatesauce and Sprinkles', 0),
+('Sundae w. Caramelsauce and Sprinkles', 0);
 
 INSERT INTO Bags (bag_size)
 VALUES('Small'),
