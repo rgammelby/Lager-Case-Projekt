@@ -1,3 +1,11 @@
+-- TODO: Add logins & permissions,
+-- Stored Procedures
+-- Overvej, at oprette generelle Ingredient- og Drink_Type tabeller for at reducere antallet af tabeller i databasen.
+-- Kig på flere CHECKS.
+-- Lids 1:1 med cup_size, da de selvfølgelig skal passe sammen.
+-- Indfør mellemtabel mellem Orders og Service_Items (M:N) ?
+-- Hvad sker der, hvis databasen allerede eksisterer?
+
 -- checks if database exists, creates database if not
 IF db_id('Storage') IS NULL
 	USE [master]
@@ -39,7 +47,7 @@ CREATE TABLE Fruit_And_Veg (
 );
 
 CREATE TABLE Ingredients (
-	ingredient_id INT PRIMARY KEY IDENTITY(1, 1) NOT NULL,
+	ingredient_id TINYINT PRIMARY KEY IDENTITY(1, 1) NOT NULL,
 	meat TINYINT FOREIGN KEY REFERENCES Meat(meat_id),
 	cheese TINYINT FOREIGN KEY REFERENCES Cheese(cheese_id),
 	bread TINYINT FOREIGN KEY REFERENCES Bread(bread_id),
@@ -51,7 +59,7 @@ CREATE TABLE Ingredients (
 -- DRINKS BIT
 CREATE TABLE Water (
 	water_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
-	amount TINYINT NOT NULL,
+	amount INT NOT NULL,
 	brand VARCHAR(50) NOT NULL
 );
 
@@ -98,7 +106,7 @@ CREATE TABLE Alcohol (
 );
 
 CREATE TABLE Drinks (
-	drink_id INT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
+	drink_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
 	water_id TINYINT FOREIGN KEY REFERENCES Water(water_id),
 	juice_id TINYINT FOREIGN KEY REFERENCES Juice(juice_id),
 	soda_id TINYINT FOREIGN KEY REFERENCES Soda(soda_id),
@@ -108,11 +116,12 @@ CREATE TABLE Drinks (
 	alcohol_id TINYINT FOREIGN KEY REFERENCES Alcohol(alcohol_id)
 );
 
+
 -- MISCELLANEOUS
 CREATE TABLE Sides (
 	side_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
 	name VARCHAR(50) NOT NULL,
-	amount TINYINT NOT NULL
+	amount INT NOT NULL
 );
 
 -- Size: Small, Medium, Large
@@ -132,27 +141,162 @@ CREATE TABLE Lids (
 );
 
 CREATE TABLE Service_Items (
-	item_id INT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
-	bags TINYINT,
-	straws TINYINT,
-	trays TINYINT,
-	cups TINYINT,
-	lids TINYINT
+	item_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
+	bags TINYINT NOT NULL,
+	straws TINYINT NOT NULL,
+	trays TINYINT NOT NULL,
+	cups TINYINT NOT NULL,
+	lids TINYINT NOT NULL
 );
 
 CREATE TABLE Orders (
-	order_id INT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
-	ingredient_id TINYINT FOREIGN KEY REFERENCES Ingredients(ingredient_id),
-	drink_id TINYINT FOREIGN KEY REFERENCES Drinks(drink_id),
-	side_id TINYINT FOREIGN KEY REFERENCES Sides(side_id),
-	item_id TINYINT FOREIGN KEY REFERENCES Service_Items(item_id)
+	order_id int PRIMARY KEY IDENTITY(1, 1) NOT NULL,
+	order_date date DEFAULT GETDATE(),
+	product varchar(64) NOT NULL,
+	amount int NOT NULL
 );
 
+CREATE TABLE Order_Details (
+	ordetail_id int PRIMARY KEY IDENTITY(1, 1) NOT NULL,
+	order_id int FOREIGN KEY REFERENCES Orders(order_id),
+	ingredient_id tinyint FOREIGN KEY REFERENCES Ingredients(ingredient_id),
+	ingredient_amount smallint NOT NULL DEFAULT 0,
+	drink_id tinyint FOREIGN KEY REFERENCES Drinks(drink_id),
+	drink_amount smallint NOT NULL DEFAULT 0,
+	side_id tinyint FOREIGN KEY REFERENCES Sides(side_id),
+	side_amount smallint NOT NULL DEFAULT 0,
+	item_id tinyint FOREIGN KEY REFERENCES Service_Items(item_id),
+	item_amount smallint NOT NULL DEFAULT 0
+);
 
-insert into coffee (coffee_type, litres)
-values ('Arabica', 0.5),
-    ('Espresso', 0.3),
-    ('Mocca', 0.3),
-    ('Americano', 0.5),
-    ('Cappuccino', 0.3);
-select * from coffee
+GO
+
+INSERT INTO Meat (meat_type)
+VALUES ('Beef'),
+('Chicken'),
+('Fish'),
+('Vegan Beef'),
+('Vegan Chicken'),
+('Bacon');
+
+INSERT INTO Cheese (cheese_type)
+VALUES ('Emmentaler Cheese'),
+('Cheddar Cheese');
+
+INSERT INTO Bread (bread_type)
+VALUES ('Coarse Bun'),
+('Brioche Bun'),
+('Sesame Bun'),
+('Steamed Bun');
+
+INSERT INTO Dressing_And_Dip (dad_type)
+VALUES ('Ketchup'),
+('Pommes Frites Sauce'),
+('Mayo'),
+('Cheddar Dip'),
+('Garlic Dip'),
+('Chili Mayo'),
+('Béarnaise Dip'),
+('BBQ Dip'),
+('Sweet N Sour Dip'),
+('Curry Sauce'),
+('Mustard Dip'),
+('Big Mac Sauce'),
+('Cajun Sauce'),
+('Tasty Sauce'),
+('Tartar Sauce');
+
+INSERT INTO Salad (salad_type)
+VALUES ('Iceberg Lettuce');
+
+INSERT INTO Fruit_And_Veg (fav_type)
+VALUES ('Tomatoes'),
+('Pickles'),
+('Red Onions'),
+('Pickled Red Onions'),
+('White Onions'),
+('Minced Onions');
+
+INSERT INTO Water (amount, brand)
+VALUES (23, 'Aqua dOr');
+
+INSERT INTO Juice (flavour, litres)
+VALUES ('Fuze Tea Peach', 54),
+('Tropicana Orange Juice', 38),
+('Tropicana Apple Juice', 12),
+('Organic Minimilk', 73);
+
+INSERT INTO Soda (flavour, litres)
+VALUES ('Coca-Cola', 632),
+('Coca-Cola Zero', 321),
+('Sprite Zero', 435),
+('Fanta Orange', 556);
+
+INSERT INTO Frappe (flavour, litres)
+VALUES ('Sour Apple', 133),
+('Coffee with Chocolate', 22),
+('Coffee with Caramel', 453);
+
+INSERT INTO Milkshake (flavour, litres)
+VALUES ('Vanilla', 34),
+('Strawberry', 28),
+('Chocolate', 36),
+('Mango and Passionfruit', 21);
+
+INSERT INTO Coffee (coffee_type, litres)
+VALUES ('Cortado', 71),
+('Espresso', 84),
+('Amerciano', 34),
+('Flat White', 57),
+('Filtercoffee', 93),
+('Cappuccino', 92),
+('Cocoa', 294),
+('Latte', 32),
+('Vanilla Latte', 34),
+('Caramel Latte', 92),
+('Chai Latte', 12),
+('Iced-Latte', 20),
+('Iced-Latte Caramel', 120),
+('Iced-Latte Honey/Caramel', 78),
+('Iced-Latte Vanilla', 71),
+('Iced-Latte Chai', 214);
+
+INSERT INTO Sides (name, amount)
+VALUES ('Pommes Frites', 214),
+('Sharing Frites', 523),
+('Chili Cheese Tops', 127),	
+('Carrot pieces', 251),
+('Apple pieces', 912),
+('Chicken McNuggets', 252),
+('Hotwings', 344),
+('Mixed Team Box', 82),
+('McFlurry Smarties', 0),
+('McFlurry Daim', 0),
+('McFlurry Toms Turtles', 0),
+('Sundae', 0),
+('Sundae m. Chocolate', 0),
+('Sundae m. Caramel', 0),
+('Sundae m. Sprinkles', 0),
+('Sundae m. Chocolatesauce and Sprinkles', 0),
+('Sundae with Caramelsauce and Sprinkles', 0);
+
+INSERT INTO Bags (bag_size)
+VALUES('Small'),
+('Large');
+
+INSERT INTO Lids (lid_size)
+VALUES ('Small'),
+('Medium'),
+('Large');
+
+INSERT INTO Alcohol (name, litres)
+VALUES ('Light Rum', 62),
+('Dark Rum', 212),
+('Vodka', 632),
+('Whisky', 354),
+('Tequila', 0),
+('Jägermeister', 21),
+('Gin', 30),
+('Baileys', 215),
+('Malibu', 50),
+('Råstof', 0);
