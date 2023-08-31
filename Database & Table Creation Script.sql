@@ -7,13 +7,13 @@
 -- Hvad sker der, hvis databasen allerede eksisterer?
 
 -- checks if database exists, creates database if not
-IF db_id('Storage') IS NULL
+IF db_id('StorageDB') IS NULL
 	USE [master]
-	CREATE DATABASE [Storage]
+	CREATE DATABASE [StorageDB]
 
 GO
 
-USE [Storage]
+USE [StorageDB]
 
 -- INGREDIENT BIT
 CREATE TABLE Meat (
