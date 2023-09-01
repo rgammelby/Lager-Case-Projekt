@@ -15,9 +15,10 @@ namespace mcdonalds_Lager.Dal
             // amount or litres
             var dts = DataAccessLayer.GetData($"SELECT * FROM {table} ");
             var aol = dts.Columns[dts.Columns.Count - 1];
+            var idName = dts.Columns[0];
 
             var getDataScript = $"SELECT {aol} FROM {table} " +
-                $"WHERE {table}_id = '{id}'";
+                $"WHERE {idName} = '{id}'";
 
             // retrieves "old" data from database
             var dt = DataAccessLayer.GetData(getDataScript);
@@ -48,7 +49,7 @@ namespace mcdonalds_Lager.Dal
             var script = "USE [StorageDB] " +
                 $"UPDATE {table} " +
                 $"SET {aol} = {newAmountstring} " +
-                $"WHERE {table}_id = {id} ";
+                $"WHERE {idName} = {id} ";
 
             DataAccessLayer.ExecuteScript(script);
             return true;
