@@ -32,6 +32,7 @@ namespace mcdonalds_Lager.Logic
                 switch (Console.ReadKey(true).Key)
                 {
                     case ConsoleKey.Backspace:
+                        Console.Clear();
                         MainAndTableController();
                         break;
                 }

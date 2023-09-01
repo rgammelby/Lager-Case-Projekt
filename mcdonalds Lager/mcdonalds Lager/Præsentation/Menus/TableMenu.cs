@@ -27,7 +27,6 @@ namespace mcdonalds_Lager.Præsentation
 
             DrawDataToTableMenu(dt, box);
 
-
             return box;
         }
 

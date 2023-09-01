@@ -8,13 +8,14 @@ namespace mcdonalds_Lager.Dal
 {
     internal class Update
     {
-        const int MAX_AMOUNT = 32000;
+        const int MAX_AMOUNT = 99999;
         #region Update
         public static bool UpdateData(string table, int id, double amount,bool add)
         {
             // amount or litres
             var dts = DataAccessLayer.GetData($"SELECT * FROM {table} ");
             var aol = dts.Columns[dts.Columns.Count - 1];
+            //Gets the name of the id
             var idName = dts.Columns[0];
 
             var getDataScript = $"SELECT {aol} FROM {table} " +
