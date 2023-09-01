@@ -18,7 +18,7 @@ Frappe
 Milkshake
 Alcohol
 
-Table containing *sizes* of items:
+Table containing the *sizes* of items:
 Small
 Regular
 Large
@@ -124,11 +124,11 @@ Baileys
 Malibu
 Råstof
 
-
 -- Miscellaneous 
 
 Bags <-- Small, Regular, Large
 Cups
 Lids
-Straws
-Trays
+-- NOTE THAT THESE SHOULD REMAIN ONE SIZE ONLY
+Straws <-- Regular
+Trays <-- Regular
