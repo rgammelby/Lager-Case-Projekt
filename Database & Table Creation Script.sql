@@ -210,7 +210,7 @@ VALUES ('Ketchup', 100),
 ('Tartar Sauce', 100);
 
 INSERT INTO Salad (salad_type, amount)
-VALUES ('Iceberg Lettuce, 100');
+VALUES ('Iceberg Lettuce', 100);
 
 INSERT INTO Fruit_And_Veg (fav_type, amount)
 VALUES ('Tomatoes', 100),
