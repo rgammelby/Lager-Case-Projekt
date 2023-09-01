@@ -264,7 +264,7 @@ VALUES ('Cortado', 71),
 ('Iced-Latte Vanilla', 71),
 ('Iced-Latte Chai', 214);
 
-INSERT INTO Sides (name, amount)
+INSERT INTO Sides (side_name, amount)
 VALUES ('Pommes Frites', 214),
 ('Sharing Frites', 523),
 ('Chili Cheese Tops', 127),	
@@ -285,14 +285,14 @@ VALUES ('Pommes Frites', 214),
 
 INSERT INTO Bags (bag_size)
 VALUES('Small'),
-('Large');
+('Large');	
 
 INSERT INTO Lids (lid_size)
 VALUES ('Small'),
 ('Medium'),
 ('Large');
 
-INSERT INTO Alcohol (name, litres)
+INSERT INTO Alcohol (alchol_name, litres)
 VALUES ('Light Rum', 62),
 ('Dark Rum', 212),
 ('Vodka', 632),
