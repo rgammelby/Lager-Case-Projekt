@@ -10,15 +10,14 @@ namespace mcdonalds_Lager
 {
     public class MainMenu
     {
-        const int X_WIREFRAME_SIZE = 2;
-        const int Y_WIREFRAME_SIZE = 3;
+        const int Y_WIREFRAME_SIZE = 2;
         /// <summary>
         /// Draw alle the none database need menus
         /// </summary>
-        public static box DrawMenu(string[] titel)
+        public static box DrawMenu(string[] titel, int startPositionY)
         {
-            box box = DrawWireFrameBox(titel);
-            ConsoleDraw.Draw(titel[0], box.ySplit[0] + 1, box.ySize + 1, ConsoleColor.DarkRed);
+            box box = DrawWireFrameBox(titel, startPositionY);
+            ConsoleDraw.Draw(titel[0], box.ySplit[0] + 1, box.yStartPosition + 1, ConsoleColor.DarkRed);
             return box;
         }
         /// <summary>
@@ -26,7 +25,7 @@ namespace mcdonalds_Lager
         /// </summary>
         /// <param name="titel"></param>
         /// <returns></returns>
-        private static box DrawWireFrameBox(string[] titel)
+        private static box DrawWireFrameBox(string[] titel, int startPositionY)
         {
             box box = new box();
             //Makes the box and gets the size from the length of the titel
@@ -35,7 +34,7 @@ namespace mcdonalds_Lager
             {
                 sum += item.Length + 2;
             }
-            box = ConsoleDraw.DrawBox(sum, X_WIREFRAME_SIZE, Y_WIREFRAME_SIZE, 2);
+            box = ConsoleDraw.DrawBox(sum, Y_WIREFRAME_SIZE, 2, startPositionY);
             sum = 0;
             //splits up the box
             for (int i = 0; i < titel.Length - 1; i++)

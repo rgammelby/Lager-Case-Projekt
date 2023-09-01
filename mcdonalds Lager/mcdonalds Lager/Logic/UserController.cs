@@ -42,11 +42,10 @@ namespace mcdonalds_Lager.Logic
         /// </summary>
         public static void MainAndTableController()
         {
-
             Console.Clear();
             xCursorLoction = 0;
             titel = mainMenuTitels;
-            box box = MainMenu.DrawMenu(titel);
+            box box = MainMenu.DrawMenu(titel, 2);
             while (true)
             {
                 switch (Console.ReadKey(true).Key)
@@ -93,6 +92,7 @@ namespace mcdonalds_Lager.Logic
 
                         else if (titel == drinksMenuTitels || titel == ingredientsTitels)
                         {
+                            Console.Clear();
                             box = MenuTitelAndTableController(box, xCursorLoction);
                         }
                         else
@@ -174,22 +174,21 @@ namespace mcdonalds_Lager.Logic
 
         private static void MainControllerMover(int moved, box box)
         {
-            ConsoleDraw.Draw(titel[xCursorLoction], box.ySplit[xCursorLoction] + 1, box.ySize + 1, ConsoleColor.White);
+            ConsoleDraw.Draw(titel[xCursorLoction], box.ySplit[xCursorLoction] + 1, box.yStartPosition + 1, ConsoleColor.White);
             xCursorLoction += moved;
-            ConsoleDraw.Draw(titel[xCursorLoction], box.ySplit[xCursorLoction] + 1, box.ySize + 1, ConsoleColor.DarkRed);
+            ConsoleDraw.Draw(titel[xCursorLoction], box.ySplit[xCursorLoction] + 1, box.yStartPosition + 1, ConsoleColor.DarkRed);
         }
         #endregion
         #endregion
         private static box MenuTitelAndTableController(box box,int x)
         {
-            Console.Clear();
             if (titel == mainMenuTitels)
             {
                 switch (x)
                 {
                     case 0:
                         titel = ingredientsTitels;
-                        box = MainMenu.DrawMenu(ingredientsTitels);
+                        box = MainMenu.DrawMenu(ingredientsTitels, 5);
                         break;
                     case 1:
                         OrderMenu.DrawOrderMenu();
@@ -197,7 +196,7 @@ namespace mcdonalds_Lager.Logic
                         break;
                     case 2:
                         titel = drinksMenuTitels;
-                        box = MainMenu.DrawMenu(drinksMenuTitels);
+                        box = MainMenu.DrawMenu(drinksMenuTitels, 5);
                         break;
                     //If there is no problem in the code will this never run
                     default:
