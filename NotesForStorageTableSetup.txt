@@ -1,0 +1,134 @@
+Table containing every *category* of goods available:
+-- Ingredients
+Meat
+Cheese
+Bread
+Dressing_And_Dip
+Salad
+Fruit_And_Vegetable
+Sides
+-- Drinks
+Water
+Juice
+Soda
+Tea
+Milk
+Coffee
+Frappe
+Milkshake
+Alcohol
+
+Table containing *sizes* of items:
+Small
+Regular
+Large
+
+Table containing every *type* pertaining to the goods:
+Beef <-- Meat
+Chicken <-- Meat
+Fish <-- Meat
+Vegan Beef <-- Meat
+Vegan Chicken <-- Meat
+Bacon <-- Meat
+
+Emmentaler Cheese <-- Cheese
+Cheddar <-- Cheese
+
+Coarse Bun <-- Bread
+Brioche Bun <-- Bread
+Sesame Bun <-- Same applies from the first top item from here on out...
+Steamed Bun
+
+Ketchup <-- Dressing_And_Dip
+Pommes Frites Sauce
+Mayo
+Cheddar Dip
+Garlic Dip
+Chili Mayo
+Béarnaise Dip
+BBQ Dip
+Sweet N Sour Dip
+Curry Sauce
+Mustard Dip
+Big Mac Sauce
+Cajun Sauce
+Tasty Sauce
+Tartar Sauce
+
+Iceberg Lettuce <-- Salad
+
+Tomatoes <-- Fruit_And_Vegetable
+Pickles
+Red Onions
+Pickled Red Onions
+White Onions
+Minced Onions
+
+Aqua d'Or <-- Water
+
+Fuze Iced Tea Peach <-- Tea
+
+Tropicana Orange Juice <-- Juice
+Tropicana Apple Juice
+
+Organic Mini Milk <-- Milk
+
+Coca-Cola <-- Soda
+Coca-Cola Zero
+Spirte Zero
+Fanta Orange
+
+Cortado <-- Coffee
+Espresso
+Amerciano
+Flat White
+Filtercoffee
+Cappuccino
+Cocoa
+Latte
+Vanilla Latte
+Caramel Latte
+Chai Latte
+Iced-Latte
+Iced-Latte Caramel
+Iced-Latte Honey/Caramel
+Iced-Latte Vanilla
+Iced-Latte Chai
+
+Pommes Frites <-- Sides
+Sharing Frites
+Chili Cheese Tops
+Chicken McNuggets
+Hotwings
+Mixed Team Box
+McFlurry Smarties
+McFlurry Daim
+McFlurry Toms Skildpadde
+Sundae
+Sundae w. Chocolate
+Sundae w. Caramel
+Sundae w. Sprinkles
+Sundae w. Chocolate Sauce & Sprinkles
+Sundae w. Caramel Sauce & Sprinkles
+Carrot Pieces 
+Apple Pieces
+
+Light Rum <-- Alcohol
+Dark Rum
+Vodka
+Whisky
+Tequila
+Jägermeister
+Gin
+Baileys
+Malibu
+Råstof
+
+
+-- Miscellaneous 
+
+Bags <-- Small, Regular, Large
+Cups
+Lids
+Straws
+Trays
