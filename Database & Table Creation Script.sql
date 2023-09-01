@@ -1,9 +1,9 @@
 -- TODO: Add logins & permissions,
 -- Stored Procedures
 -- Overvej, at oprette generelle Ingredient- og Drink_Type tabeller for at reducere antallet af tabeller i databasen.
--- Kig på flere CHECKS.
--- Lids 1:1 med cup_size, da de selvfølgelig skal passe sammen.
--- Indfør mellemtabel mellem Orders og Service_Items (M:N) ?
+-- Kig pÃ¥ flere CHECKS.
+-- Lids 1:1 med cup_size, da de selvfÃ¸lgelig skal passe sammen.
+-- IndfÃ¸r mellemtabel mellem Orders og Service_Items (M:N) ?
 -- Hvad sker der, hvis databasen allerede eksisterer?
 
 -- checks if database exists, creates database if not
@@ -54,12 +54,12 @@ CREATE TABLE Fruit_And_Veg (
 
 CREATE TABLE Ingredients (
 	ingredient_id TINYINT PRIMARY KEY IDENTITY(1, 1) NOT NULL,
-	meat TINYINT FOREIGN KEY REFERENCES Meat(meat_id),
-	cheese TINYINT FOREIGN KEY REFERENCES Cheese(cheese_id),
-	bread TINYINT FOREIGN KEY REFERENCES Bread(bread_id),
-	dad TINYINT FOREIGN KEY REFERENCES Dressing_And_Dip(dad_id),
-	salad TINYINT FOREIGN KEY REFERENCES Salad(salad_id),
-	fav TINYINT FOREIGN KEY REFERENCES Fruit_And_Veg(fav_id),
+	meat_id TINYINT FOREIGN KEY REFERENCES Meat(meat_id),
+	cheese_id TINYINT FOREIGN KEY REFERENCES Cheese(cheese_id),
+	bread_id TINYINT FOREIGN KEY REFERENCES Bread(bread_id),
+	dad_id TINYINT FOREIGN KEY REFERENCES Dressing_And_Dip(dad_id),
+	salad_id TINYINT FOREIGN KEY REFERENCES Salad(salad_id),
+	fav_id TINYINT FOREIGN KEY REFERENCES Fruit_And_Veg(fav_id),
 	amount INT NOT NULL
 );
 
@@ -107,7 +107,7 @@ CREATE TABLE Coffee (
 
 CREATE TABLE Alcohol (
 	alcohol_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
-	name VARCHAR(50) NOT NULL,
+	alchol_name VARCHAR(50) NOT NULL,
 	litres DECIMAL (6, 2) NOT NULL,
 	CHECK (litres >= 0)
 );
@@ -127,7 +127,7 @@ CREATE TABLE Drinks (
 -- MISCELLANEOUS
 CREATE TABLE Sides (
 	side_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
-	name VARCHAR(50) NOT NULL,
+	side_name VARCHAR(50) NOT NULL,
 	amount INT NOT NULL
 );
 
@@ -149,11 +149,11 @@ CREATE TABLE Lids (
 
 CREATE TABLE Service_Items (
 	item_id TINYINT PRIMARY KEY IDENTITY (1, 1) NOT NULL,
-	bags TINYINT NOT NULL,
-	straws TINYINT NOT NULL,
-	trays TINYINT NOT NULL,
-	cups TINYINT NOT NULL,
-	lids TINYINT NOT NULL
+	bags_id TINYINT NOT NULL,
+	straws_id TINYINT NOT NULL,
+	trays_id TINYINT NOT NULL,
+	cups_id TINYINT NOT NULL,
+	lids_id TINYINT NOT NULL
 );
 
 CREATE TABLE Orders (
@@ -199,7 +199,7 @@ VALUES ('Ketchup', 100),
 ('Cheddar Dip', 100),
 ('Garlic Dip', 100),
 ('Chili Mayo', 100),
-('Béarnaise Dip', 100),
+('BÃ©arnaise Dip', 100),
 ('BBQ Dip', 100),
 ('Sweet N Sour Dip', 100),
 ('Curry Sauce', 100),
@@ -298,8 +298,8 @@ VALUES ('Light Rum', 62),
 ('Vodka', 632),
 ('Whisky', 354),
 ('Tequila', 0),
-('Jägermeister', 21),
+('JÃ¤germeister', 21),
 ('Gin', 30),
 ('Baileys', 215),
 ('Malibu', 50),
-('Råstof', 0);
+('RÃ¥stof', 0);
